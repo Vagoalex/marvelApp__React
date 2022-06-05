@@ -1,0 +1,56 @@
+@import './normalize.scss';
+@import './fonts.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+@import './variables.scss';
+@import './mixins.scss';
+
+html {
+	scroll-behavior: smooth;
+}
+body {
+	font-family: 'Roboto Condensed', 'Roboto' , sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: normal;
+	letter-spacing: 0.06em;
+	min-width: 320px;
+	position: relative;
+	overflow-x: hidden;
+	color: #000;
+	transition: 0.2s;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+.wrapper {
+	max-width: 1280px;
+	padding: 0 40px;
+	margin: 0 auto;
+}
+
+
+
+
+.pulse {
+  animation: pulse 1.5s ease-in-out 0.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
