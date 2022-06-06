@@ -1,36 +1,114 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.header {
+  background: url('https://img3.akspic.ru/crops/8/2/4/7/3/137428/137428-kinoteatr-noch-teatralnoe_iskusstvo-poster-tanos-3840x2160.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  border-bottom: 5px solid rgb(0, 0, 0);
+}
+
 .main {
+  padding: 50px 0px;
+
+  background: url('https://img2.akspic.ru/crops/1/6/0/7/3/137061/137061-figurka-kostyum_aktera-vymyslennyj_personaz-cifrovoe_iskusstvo-supergeroj-3840x2160.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
   &__content {
   }
 
-  &__decoration {
+  .decoration-vision {
     position: absolute;
     bottom: 10px;
-    right: 0;
-  }
+    right: -175px;
+    z-index: -1;
 
-  &__scroll {
+    animation: move-wheel 4s linear infinite;
+    animation-direction: alternate;
   }
+  .decoration-falcon {
+    position: absolute;
+    top: 10px;
+    left: -365px;
+    z-index: -1;
+
+    animation-duration: 3s;
+    animation-name: slide-top;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  .decoration-iron-Man {
+    position: absolute;
+    top: -210px;
+    right: -365px;
+    z-index: -1;
+
+    animation-duration: 4s;
+    animation-name: slide-bottom;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  .decoration-spider-man {
+    position: absolute;
+    bottom: 73px;
+    left: -386px;
+    z-index: -1;
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 1140px;
+
+  @include push--auto;
 }
 
 .char-content {
+  display: flex;
+  position: relative;
+  z-index: 10;
 }
 
-.scroll-up {
-  width: 25px;
-  height: 50px;
-  border: 2px solid #000;
+.scroll {
+  background: #d8021b;
+  padding: 10px;
   border-radius: 20px;
-  display: flex;
-  cursor: pointer;
+  position: fixed;
+  top: calc(100% - 16%);
+  right: calc(100% - 85%);
 
-  .mouse-wheel {
-    display: block;
-    width: 10px;
-    height: 10px;
-    background-color: #000;
-    border-radius: 50%;
-    margin: auto;
-    animation: move-wheel 1s linear infinite;
+  font-size: 20px;
+  z-index: 100;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .scroll-up {
+    margin-top: 10px;
+    width: 25px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    display: flex;
+    cursor: pointer;
+
+    .mouse-wheel {
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: auto;
+      animation: move-wheel 1s linear infinite;
+    }
   }
 }
 
@@ -42,5 +120,27 @@
   100% {
     opacity: 1;
     transform: translateY(-1rem);
+  }
+}
+
+@keyframes slide-top {
+  from {
+    top: 10px;
+  }
+
+  to {
+    top: -150px;
+  }
+}
+
+@keyframes slide-bottom {
+  from {
+    top: -210px;
+    right: -365px;
+  }
+
+  to {
+    top: -160px;
+    right: -195px;
   }
 }

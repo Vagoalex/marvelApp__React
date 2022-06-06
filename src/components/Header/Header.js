@@ -4,7 +4,7 @@ import './Header.scss';
 export class Header extends Component {
   render() {
     return (
-      <header className='Header wrapper'>
+      <div className='Header wrapper'>
         <h1 className='Header__title'>
           <a
             className='Header__title-link'
@@ -16,12 +16,12 @@ export class Header extends Component {
         </h1>
         <nav className='Header__nav'>
           <ul className='nav'>
-            <li className='nav__item nav__item--active'>Characters</li>
+            <li className='nav__item  nav__item--active'>Characters</li>
             <span className='nav__slash'>/</span>
             <li className='nav__item'>Comics</li>
           </ul>
         </nav>
-      </header>
+      </div>
     );
   }
 }

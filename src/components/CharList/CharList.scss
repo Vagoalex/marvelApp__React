@@ -1,0 +1,12 @@
+.CharList {
+  flex: 60%;
+}
+.CharList-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  grid-column-gap: 0em;
+  grid-row-gap: 2em;
+}
+.CharList-cards-more {
+}
