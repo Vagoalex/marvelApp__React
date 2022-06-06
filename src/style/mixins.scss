@@ -1,6 +1,5 @@
-
 // ========================================================
-@mixin pseudo($display: block, $pos: absolute, $content: ''){
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
   content: $content;
   display: $display;
   position: $pos;
@@ -15,23 +14,23 @@
 // ========================================================
 @mixin push--auto {
   margin: {
-   left: auto;
-   right: auto;
+    left: auto;
+    right: auto;
   }
 }
 // margin left margin right center :)
 
 // ========================================================
-@mixin responsive-ratio($x,$y, $pseudo: false) {
-  $padding: unquote( ( $y / $x ) * 100 + '%' );
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + '%');
   @if $pseudo {
-   &:before {
-    @include pseudo($pos: relative);
-    width: 100%;
-    padding-top: $padding;
-   }
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
   } @else {
-   padding-top: $padding;
+    padding-top: $padding;
   }
 }
 // EXAMPLE responsive ratio ===========>
