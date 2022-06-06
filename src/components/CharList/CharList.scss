@@ -1,5 +1,6 @@
 .CharList {
   flex: 60%;
+  position: relative;
 }
 .CharList-cards {
   display: grid;
@@ -9,4 +10,56 @@
   grid-row-gap: 2em;
 }
 .CharList-cards-more {
+}
+
+.scroll {
+  background: #d8021b;
+  padding: 5px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+
+  font-size: 20px;
+  z-index: 100;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  transition: all 0.5s ease;
+
+  .scroll-up {
+    margin-top: 10px;
+    width: 25px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    display: flex;
+    cursor: pointer;
+
+    .mouse-wheel {
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: auto;
+      animation: move-wheel 1s linear infinite;
+    }
+  }
+  &:hover {
+    bottom: 1%;
+  }
+}
+
+@keyframes move-wheel {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-1rem);
+  }
 }

@@ -25,6 +25,10 @@
     height: 150px;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
     border-radius: 15px;
+    transition: all 0.5s ease;
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 
   .char-info-inner {

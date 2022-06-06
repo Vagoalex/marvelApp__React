@@ -71,13 +71,6 @@ export class App extends Component {
                 alt='decorationSpiderMan'
               />
             </div>
-
-            <div className='scroll'>
-              Scroll up
-              <span className='scroll-up'>
-                <span className='mouse-wheel'></span>
-              </span>
-            </div>
           </div>
         </main>
       </Fragment>

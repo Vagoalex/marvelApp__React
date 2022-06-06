@@ -16,6 +16,12 @@ export class CharList extends Component {
         <button className='CharList-cards-more button button__main button__long'>
           <div className='inner'>Load More</div>
         </button>
+
+        <div className='scroll'>
+          <span className='scroll-up'>
+            <span className='mouse-wheel'></span>
+          </span>
+        </div>
       </section>
     );
   }
