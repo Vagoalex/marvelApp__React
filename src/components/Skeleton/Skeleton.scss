@@ -1,0 +1,48 @@
+.Skeleton {
+  background: url('https://st2.depositphotos.com/3558991/7388/v/600/depositphotos_73889039-stock-illustration-abstract-pattern-hexagon-on-gray.jpg');
+  border-radius: 10px;
+  padding: 10px;
+  height: 100%;
+  box-shadow: 12px -6px 18px rgba(0, 0, 0, 0.75);
+}
+
+.skeleton-select {
+  color: #c4c4c4;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+  filter: drop-shadow(0px 5px 20px #9f0013);
+}
+
+.skeleton {
+  &__header {
+    display: grid;
+    grid-template-columns: 40px auto;
+    column-gap: 10px;
+    align-items: center;
+  }
+  &__circle {
+    width: 40px;
+    height: 40px;
+    background-color: #3b3a3a;
+    filter: drop-shadow(0px 5px 20px #000000);
+    border-radius: 100%;
+  }
+  &__mini {
+    width: 100%;
+    height: 16px;
+    background-color: #3b3a3a;
+    filter: drop-shadow(0px 5px 20px #9f0013);
+    border-radius: 15px;
+  }
+  &__block {
+    height: 35px;
+    width: 100%;
+    background-color: #3b3a3a;
+    border-radius: 15px;
+    filter: drop-shadow(0px 5px 20px #9f0013);
+    margin-top: 15px;
+  }
+}

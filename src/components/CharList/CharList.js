@@ -1,13 +1,36 @@
 import { Component } from 'react';
+import MarvelService from '../../services/MarvelService';
 import './CharList.scss';
 import CharListItem from '../CharListItem/CharListItem';
 
 export class CharList extends Component {
-  render() {
-    const { characters } = this.props;
+  state = {
+    chars: [],
+    loading: true,
+    error: false,
+  };
 
-    const heroes = characters.map(({ name, src }) => (
-      <CharListItem key={name} name={name} src={src} />
+  marvelService = new MarvelService();
+
+  componentDidMount() {
+    this.marvelService
+      .getAllCharacters()
+      .then(this.onCharsLoaded)
+      .catch(this.onError);
+  }
+
+  onCharsLoaded = (chars) => {
+    this.setState({ chars, loading: false });
+  };
+
+  onError = () => {
+    console.log('error');
+  };
+
+  render() {
+    const { chars } = this.state;
+    const heroes = chars.map(({ id, ...data }) => (
+      <CharListItem key={id} data={data} />
     ));
 
     return (
