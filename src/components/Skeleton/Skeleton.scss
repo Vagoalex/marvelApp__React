@@ -1,13 +1,24 @@
 .Skeleton {
-  background: url('https://st2.depositphotos.com/3558991/7388/v/600/depositphotos_73889039-stock-illustration-abstract-pattern-hexagon-on-gray.jpg');
+  background: url('https://i1.wallbox.ru/wallpapers/small/201727/1499330903595df957de22e3.79057767.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
   border-radius: 10px;
-  padding: 10px;
-  height: 100%;
-  box-shadow: 12px -6px 18px rgba(0, 0, 0, 0.75);
+  flex: 40%;
+  // max-width: 425px;
+  width: 100%;
+  padding: 25px;
+  border: 2px solid #000;
+  box-shadow: 12px -6px 18px rgba(0, 0, 0, 0.95);
 }
 
 .skeleton-select {
-  color: #c4c4c4;
+  color: #c6c6c6;
   font-weight: bold;
   font-size: 18px;
   line-height: 24px;

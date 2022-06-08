@@ -3,8 +3,6 @@ import Header from '../Header/Header';
 import RandomChar from '../RandomChar/RandomChar';
 import CharList from '../CharList/CharList';
 import CharInfo from '../CharInfo/CharInfo';
-import MarvelService from '../../services/MarvelService';
-import Skeleton from '../Skeleton/Skeleton';
 
 import decorationVision from '../../assets/images/decorations/decorationVision.png';
 import decorationFalcon from '../../assets/images/decorations/decorationFalcon.png';
@@ -14,7 +12,16 @@ import decorationSpiderMan from '../../assets/images/decorations/decorationSpide
 import './App.scss';
 
 export class App extends Component {
+  state = {
+    selectedChar: null,
+  };
+
+  onCharSelected = (id) => {
+    this.setState({ selectedChar: id });
+  };
+
   render() {
+    const { selectedChar } = this.state;
     return (
       <Fragment>
         <header className='header'>
@@ -24,9 +31,8 @@ export class App extends Component {
         <main className='main'>
           <div className='container wrapper'>
             <div className='main__content char-content'>
-              <CharList />
-              {/* <CharInfo /> */}
-              {/* <Skeleton /> */}
+              <CharList onCharSelected={this.onCharSelected} />
+              <CharInfo charID={selectedChar} />
               <img
                 className='decoration-vision'
                 src={decorationVision}

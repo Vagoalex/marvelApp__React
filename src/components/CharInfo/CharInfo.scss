@@ -16,6 +16,7 @@
     rgba(255, 255, 255, 1) 100%
   );
   z-index: 10;
+  position: relative;
 }
 
 .char-info {
@@ -47,7 +48,7 @@
     }
     &__link {
       position: absolute;
-      bottom: 40%;
+      bottom: 32%;
       left: 0;
     }
 

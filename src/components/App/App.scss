@@ -64,8 +64,7 @@
 
 .wrapper {
   max-width: 1140px;
-
-  @include push--auto;
+  margin: 0 auto;
 }
 
 .char-content {

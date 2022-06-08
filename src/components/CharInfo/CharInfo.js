@@ -1,70 +1,124 @@
 import { Component } from 'react';
+import MarvelService from '../../services/MarvelService';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
+import Skeleton from '../Skeleton/Skeleton';
+
 import './CharInfo.scss';
 
+import marvelIcon from '../../assets/icons/marvelIcon.jpg';
+
 export class CharInfo extends Component {
+  state = {
+    char: null,
+    loading: false,
+    error: false,
+  };
+
+  marvelService = new MarvelService();
+
+  componentDidMount() {
+    this.updateChar();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.charID !== prevProps.charID) {
+      this.updateChar();
+    }
+  }
+
+  updateChar = () => {
+    const { charID } = this.props;
+    if (!charID) {
+      return;
+    }
+
+    this.onCharLoading();
+    this.marvelService
+      .getCharacterById(charID)
+      .then(this.onCharLoaded)
+      .catch(this.onError);
+  };
+
+  onCharLoaded = (char) => {
+    this.setState({ char, loading: false });
+  };
+
+  onCharLoading = () => {
+    this.setState({ loading: true });
+  };
+
+  onError = () => {
+    this.setState({ loading: false, error: true });
+  };
+
   render() {
-    const { characters } = this.props;
-    const { name, src } = characters[1];
+    const { char, loading, error } = this.state;
+
+    const skeleton = char || loading || error ? null : <Skeleton />;
+    const loadingContent = loading ? <LoadingMarvel /> : null;
+    const errorContent = error ? <ErrorMessage /> : null;
+    const content = !(loading || error || !char) ? <View char={char} /> : null;
+
     return (
       <section className='CharInfo'>
-        <div className='char-info'>
-          <img className='char-info__img' src={src} alt={name} />
-          <div className='char-info-inner'>
-            <h3 className='char-info-inner__title'>{name}</h3>
-            <a className='char-info-inner__link button button__main' href='#!'>
-              <div className='inner'>Homepage</div>
-            </a>
-            <a
-              className='char-info-inner__link button button__secondary'
-              href='#!'
-            >
-              <div className='inner'>Wiki</div>
-            </a>
-          </div>
-        </div>
-        <div className='char-info-desc'>
-          <p className='char-info-desc__paragraph'>
-            In Norse mythology, Loki is a god or jötunn (or both). Loki is the
-            son of Fárbauti and Laufey, and the brother of Helblindi and
-            Býleistr. By the jötunn Angrboða, Loki is the father of Hel, the
-            wolf Fenrir, and the world serpent Jörmungandr. By Sigyn, Loki is
-            the father of Nari and/or Narfi and with the stallion Svaðilfari as
-            the father, Loki gave birth—in the form of a mare—to the
-            eight-legged horse Sleipnir. In addition, Loki is referred to as the
-            father of Váli in the Prose Edda.
-          </p>
-        </div>
-        <div className='char-info-comics'>
-          <h4 className='char-info-comics__title'>Comics:</h4>
-          <ul className='comics-list'>
-            <li className='comics-list__item'>
-              All-Winners Squad: Band of Heroes (2011) #3
-            </li>
-            <li className='comics-list__item'>Alpha Flight (1983) #50</li>
-            <li className='comics-list__item'>
-              Amazing Spider-Man (1999) #503
-            </li>
-            <li className='comics-list__item'>
-              Amazing Spider-Man (1999) #504
-            </li>
-            <li className='comics-list__item'>
-              AMAZING SPIDER-MAN VOL. 7: BOOK OF EZEKIEL TPB (Trade Paperback)
-            </li>
-            <li className='comics-list__item'>
-              Amazing-Spider-Man: Worldwide Vol. 8 (Trade Paperback)
-            </li>
-            <li className='comics-list__item'>
-              Asgardians Of The Galaxy Vol. 2: War Of The Realms (Trade
-              Paperback)
-            </li>
-            <li className='comics-list__item'>Vengeance (2011) #4</li>
-            <li className='comics-list__item'>Avengers (1963) #1</li>
-            <li className='comics-list__item'>Avengers (1996) #1</li>
-          </ul>
-        </div>
+        {skeleton}
+        {loadingContent}
+        {errorContent}
+        {content}
       </section>
     );
   }
 }
+
+const View = ({ char }) => {
+  const { name, description, thumbnail, homepage, wiki, comics } = char;
+  const comicsContent = comics.map(({ name }, i) => {
+    if (i > 10) {
+      return null;
+    }
+    return <ComicsItem key={i} name={name} />;
+  });
+
+  const notAvailableImg = 'image_not_available.jpg';
+  const image =
+    thumbnail.slice(-23) === notAvailableImg ? marvelIcon : thumbnail;
+
+  const availableComics = comics.length === 0 ? ' hidden' : '';
+
+  return (
+    <>
+      <div className='char-info'>
+        <img className='char-info__img' src={image} alt={name} />
+        <div className='char-info-inner'>
+          <h3 className='char-info-inner__title'>{name}</h3>
+          <a
+            className='char-info-inner__link button button__main'
+            href={homepage}
+          >
+            <div className='inner'>Homepage</div>
+          </a>
+          <a
+            className='char-info-inner__link button button__secondary'
+            href={wiki}
+          >
+            <div className='inner'>Wiki</div>
+          </a>
+        </div>
+      </div>
+      <div className='char-info-desc'>
+        <p className='char-info-desc__paragraph'>{description}</p>
+      </div>
+      <div className={`char-info-comics ${availableComics}`}>
+        <h4 className='char-info-comics__title'>Comics:</h4>
+        <ul className='comics-list'>{comicsContent}</ul>
+      </div>
+    </>
+  );
+};
+
+const ComicsItem = ({ name }) => {
+  return <li className='comics-list__item'>{name}</li>;
+};
 
 export default CharInfo;

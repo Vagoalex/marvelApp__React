@@ -34,6 +34,7 @@ class MarvelService {
 
   getCharacterById = async (id) => {
     const { url, characters, apiKeyGmail } = this._server;
+
     const res = await this.getResource(
       `${url}${characters}/${id}?apikey=${apiKeyGmail}`
     );
@@ -41,7 +42,7 @@ class MarvelService {
   };
 
   _transformCharacter = (char) => {
-    const { id, name, description, thumbnail, urls } = char;
+    const { id, name, description, thumbnail, urls, comics } = char;
     const filteredDesc =
       description === ''
         ? `This Marvel character doesn't have description.\n Please, click the links`
@@ -54,6 +55,7 @@ class MarvelService {
       thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
       homepage: urls[0].url,
       wiki: urls[1].url,
+      comics: comics.items,
     };
   };
 }
