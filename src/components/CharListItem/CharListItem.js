@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
@@ -25,5 +26,11 @@ export class CharListItem extends Component {
     );
   }
 }
+
+CharListItem.propTypes = {
+  data: PropTypes.object,
+  id: PropTypes.number,
+  onCharSelected: PropTypes.func,
+};
 
 export default CharListItem;

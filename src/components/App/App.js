@@ -1,4 +1,5 @@
 import { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import RandomChar from '../RandomChar/RandomChar';
 import CharList from '../CharList/CharList';
@@ -18,7 +19,7 @@ export class App extends Component {
   };
 
   onScrollToTop = () => {
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 150 });
   };
 
   onCharSelected = (id) => {
@@ -72,5 +73,9 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  onCharSelected: PropTypes.func,
+};
 
 export default App;

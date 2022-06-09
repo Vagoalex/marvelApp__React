@@ -14,6 +14,7 @@ export class CharList extends Component {
     error: false,
     newCharsLoading: false,
     offset: 0,
+    charEnded: false,
   };
   _timeout = null;
 
@@ -36,11 +37,17 @@ export class CharList extends Component {
   };
 
   onCharsLoaded = (newChars) => {
+    let ended = false;
+    if (newChars.length < 9) {
+      ended = true;
+    }
+
     this.setState(({ offset, chars }) => ({
       chars: [...chars, ...newChars],
       loading: false,
       newCharsLoading: false,
       offset: offset + 9,
+      charEnded: ended,
     }));
   };
 
@@ -61,7 +68,8 @@ export class CharList extends Component {
 
   render() {
     const { onCharSelected } = this.props;
-    const { chars, loading, error, newCharsLoading, offset } = this.state;
+    const { chars, loading, error, newCharsLoading, offset, charEnded } =
+      this.state;
     const heroes = chars.map(({ id, ...data }) => (
       <CharListItem
         onCharSelected={onCharSelected}
@@ -89,6 +97,7 @@ export class CharList extends Component {
           disabled={newCharsLoading}
           onClick={() => this.onRequestChars(offset)}
           className='CharList-cards-more button button__main button__long'
+          style={{ visibility: charEnded ? 'hidden' : '' }}
         >
           <div className='inner'>Load More</div>
         </button>

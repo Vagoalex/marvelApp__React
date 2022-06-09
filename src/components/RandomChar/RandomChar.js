@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
@@ -126,6 +127,13 @@ const View = ({ char }) => {
       </div>
     </>
   );
+};
+
+RandomChar.propTypes = {
+  onCharLoaded: PropTypes.func,
+  onCharLoading: PropTypes.func,
+  onError: PropTypes.func,
+  updateChar: PropTypes.func,
 };
 
 export default RandomChar;
