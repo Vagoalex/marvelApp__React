@@ -9,7 +9,7 @@ const ErrorMessage = () => {
     fontWeight: 700,
     textTransform: 'uppercase',
     background: '#000',
-    width: '70%',
+    width: '50%',
     borderRadius: '14px',
     padding: '5px 0px',
   };
@@ -30,7 +30,7 @@ const ErrorMessage = () => {
       <p style={stylesText}>
         Oops!
         <br />
-        Please, update your page or click the button right
+        Please, update your page :)
       </p>
       <img style={stylesImg} src='https://i.gifer.com/fy3e.gif' alt='error' />
     </>
