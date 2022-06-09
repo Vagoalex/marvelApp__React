@@ -14,11 +14,11 @@
 
 .scroll {
   background: #d8021b;
-  padding: 5px;
+  padding: 5px 17px;
   border-radius: 12px;
   position: absolute;
-  bottom: 8%;
-  right: 0%;
+  bottom: 0%;
+  right: 5%;
 
   font-size: 20px;
   z-index: 100;
@@ -30,9 +30,8 @@
   transition: all 0.5s ease;
 
   .scroll-up {
-    margin-top: 10px;
-    width: 25px;
-    height: 50px;
+    width: 85px;
+    height: 28px;
     border: 2px solid #fff;
     border-radius: 20px;
     display: flex;
@@ -40,10 +39,10 @@
 
     .mouse-wheel {
       display: block;
-      width: 10px;
+      width: 64px;
       height: 10px;
       background-color: #fff;
-      border-radius: 50%;
+      border-radius: 35%;
       margin: auto;
       animation: move-wheel 1s linear infinite;
     }

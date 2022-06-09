@@ -2,8 +2,8 @@ class MarvelService {
   _server = {
     url: 'https://gateway.marvel.com:443/v1/public/',
     characters: 'characters',
-    limit: 'limit=9',
-    offset: 'offset=0',
+    baseLimit: 9,
+    baseOffset: 0,
     comics: 'comics',
     apiKeyIvan: 'c5d6fc8b83116d92ed468ce36bac6c62',
     apiKeyMail: 'b3252ae24667fd89a578925f8337c8d2',
@@ -22,11 +22,11 @@ class MarvelService {
     }
   };
 
-  getAllCharacters = async () => {
-    const { url, characters, limit, offset, apiKeyGmail } = this._server;
+  getAllCharacters = async (offset = this._server.baseOffset) => {
+    const { url, characters, baseLimit, apiKeyGmail } = this._server;
 
     const res = await this.getResource(
-      `${url}${characters}?${limit}&${offset}&apikey=${apiKeyGmail}`
+      `${url}${characters}?limit=${baseLimit}&offset=${offset}&apikey=${apiKeyGmail}`
     );
 
     return res.data.results.map(this._transformCharacter);

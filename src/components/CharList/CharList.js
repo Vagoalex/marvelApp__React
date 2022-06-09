@@ -12,19 +12,44 @@ export class CharList extends Component {
     chars: [],
     loading: true,
     error: false,
+    newCharsLoading: false,
+    offset: 0,
   };
+  _timeout = null;
 
   marvelService = new MarvelService();
 
   componentDidMount() {
-    this.marvelService
-      .getAllCharacters()
-      .then(this.onCharsLoaded)
-      .catch(this.onError);
+    this.onRequestChars();
   }
 
-  onCharsLoaded = (chars) => {
-    this.setState({ chars, loading: false });
+  componentWillUnmount() {
+    clearInterval(this._timeout);
+  }
+
+  onRequestChars = (offset) => {
+    this.onNewCharsLoading();
+    this.marvelService
+      .getAllCharacters(offset)
+      .then(this.onCharsLoaded)
+      .catch(this.onError);
+  };
+
+  onCharsLoaded = (newChars) => {
+    this.setState(({ offset, chars }) => ({
+      chars: [...chars, ...newChars],
+      loading: false,
+      newCharsLoading: false,
+      offset: offset + 9,
+    }));
+  };
+
+  onNewCharsLoading = () => {
+    this.setState({ newCharsLoading: true });
+  };
+
+  onScrollToTop = () => {
+    window.scrollTo({ top: 0 });
   };
 
   onError = () => {
@@ -36,7 +61,7 @@ export class CharList extends Component {
 
   render() {
     const { onCharSelected } = this.props;
-    const { chars, loading, error } = this.state;
+    const { chars, loading, error, newCharsLoading, offset } = this.state;
     const heroes = chars.map(({ id, ...data }) => (
       <CharListItem
         onCharSelected={onCharSelected}
@@ -60,11 +85,15 @@ export class CharList extends Component {
           {content}
         </ul>
 
-        <button className='CharList-cards-more button button__main button__long'>
+        <button
+          disabled={newCharsLoading}
+          onClick={() => this.onRequestChars(offset)}
+          className='CharList-cards-more button button__main button__long'
+        >
           <div className='inner'>Load More</div>
         </button>
 
-        <div className='scroll'>
+        <div onClick={this.onScrollToTop} className='scroll'>
           <span className='scroll-up'>
             <span className='mouse-wheel'></span>
           </span>

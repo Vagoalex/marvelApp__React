@@ -17,8 +17,13 @@ export class App extends Component {
     selectedChar: null,
   };
 
+  onScrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   onCharSelected = (id) => {
     this.setState({ selectedChar: id });
+    this.onScrollToTop();
   };
 
   render() {
