@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/marvelApp__React/static/css/main.6582ae7c.css",
-    "main.js": "/marvelApp__React/static/js/main.fb6ca70e.js",
+    "main.css": "/marvelApp__React/static/css/main.5b200ae4.css",
+    "main.js": "/marvelApp__React/static/js/main.363fe0d0.js",
     "static/media/CharListItemLoading.gif": "/marvelApp__React/static/media/CharListItemLoading.6cefb0de3a5c513193d1.gif",
     "static/media/ironMan404.gif": "/marvelApp__React/static/media/ironMan404.a42bbd2087ae7da19980.gif",
     "static/media/Marvel.gif": "/marvelApp__React/static/media/Marvel.f3c85a8b070a9f674cce.gif",
@@ -12,11 +12,11 @@
     "static/media/RandomChar-mjolnerShild.png": "/marvelApp__React/static/media/RandomChar-mjolnerShild.439ab19cfabed7d9d9b8.png",
     "static/media/marvelIcon.jpg": "/marvelApp__React/static/media/marvelIcon.dd9b81e060c773c65315.jpg",
     "index.html": "/marvelApp__React/index.html",
-    "main.6582ae7c.css.map": "/marvelApp__React/static/css/main.6582ae7c.css.map",
-    "main.fb6ca70e.js.map": "/marvelApp__React/static/js/main.fb6ca70e.js.map"
+    "main.5b200ae4.css.map": "/marvelApp__React/static/css/main.5b200ae4.css.map",
+    "main.363fe0d0.js.map": "/marvelApp__React/static/js/main.363fe0d0.js.map"
   },
   "entrypoints": [
-    "static/css/main.6582ae7c.css",
-    "static/js/main.fb6ca70e.js"
+    "static/css/main.5b200ae4.css",
+    "static/js/main.363fe0d0.js"
   ]
 }
