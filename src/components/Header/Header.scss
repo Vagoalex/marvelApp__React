@@ -21,6 +21,13 @@
 .Header__title-link {
   text-decoration: none;
   color: $main-color;
+
+  &:focus {
+    outline: 1px solid transparent;
+    text-transform: uppercase;
+    margin-right: 50px;
+    text-decoration: underline;
+  }
 }
 
 .nav {
@@ -48,6 +55,10 @@
 
 .nav__item:hover.nav__item--active {
   transform: scale(1);
+}
+.nav__item:focus {
+  outline: 1px solid transparent;
+  transform: scale(1.15);
 }
 .nav__item--active {
   color: $main-color;

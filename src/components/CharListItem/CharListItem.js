@@ -15,7 +15,16 @@ export class CharListItem extends Component {
       thumbnail.slice(-23) === notAvailableImg ? marvelIcon : thumbnail;
 
     return (
-      <li onClick={() => onCharSelected(id)} className='CharList-cards-item'>
+      <li
+        onClick={() => onCharSelected(id)}
+        className='CharList-cards-item'
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            onCharSelected(id);
+          }
+        }}
+      >
         <img
           className='CharList-cards-item__img'
           src={image}

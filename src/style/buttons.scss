@@ -95,4 +95,8 @@
   &:disabled {
     filter: grayscale(0.5);
   }
+  &:focus {
+    outline: 1px solid transparent;
+    transform: translateY(-5px);
+  }
 }

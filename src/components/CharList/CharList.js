@@ -102,7 +102,7 @@ export class CharList extends Component {
           <div className='inner'>Load More</div>
         </button>
 
-        <div onClick={this.onScrollToTop} className='scroll'>
+        <div tabIndex={0} onClick={this.onScrollToTop} className='scroll'>
           <span className='scroll-up'>
             <span className='mouse-wheel'></span>
           </span>

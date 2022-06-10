@@ -42,21 +42,26 @@ class MarvelService {
   };
 
   _transformCharacter = (char) => {
-    const { id, name, description, thumbnail, urls, comics } = char;
-    const filteredDesc =
-      description === ''
-        ? `This Marvel character doesn't have description.\n Please, click the links`
-        : `${description.slice(0, 210)}...`;
+    try {
+      const { id, name, description, thumbnail, urls, comics } = char;
 
-    return {
-      id,
-      name,
-      description: filteredDesc,
-      thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
-      homepage: urls[0].url,
-      wiki: urls[1].url,
-      comics: comics.items,
-    };
+      const filteredDesc =
+        description === ''
+          ? `This Marvel character doesn't have description.\n Please, click the links`
+          : `${description.slice(0, 210)}...`;
+
+      return {
+        id,
+        name,
+        description: filteredDesc,
+        thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
+        homepage: urls[0].url,
+        wiki: urls[1].url,
+        comics: comics.items,
+      };
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 }
 

@@ -16,9 +16,13 @@ export class Header extends Component {
         </h1>
         <nav className='Header__nav'>
           <ul className='nav'>
-            <li className='nav__item  nav__item--active'>Characters</li>
+            <li tabIndex={0} className='nav__item  nav__item--active'>
+              Characters
+            </li>
             <span className='nav__slash'>/</span>
-            <li className='nav__item'>Comics</li>
+            <li tabIndex={0} className='nav__item'>
+              Comics
+            </li>
           </ul>
         </nav>
       </div>

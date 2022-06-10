@@ -48,4 +48,8 @@
       animation: move-wheel 1s linear infinite;
     }
   }
+
+  &:focus {
+    outline: 2px solid #fff;
+  }
 }
