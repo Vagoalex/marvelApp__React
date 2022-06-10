@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/marvelApp__React/static/css/main.6582ae7c.css",
+    "main.js": "/marvelApp__React/static/js/main.fb6ca70e.js",
+    "static/media/CharListItemLoading.gif": "/marvelApp__React/static/media/CharListItemLoading.6cefb0de3a5c513193d1.gif",
+    "static/media/ironMan404.gif": "/marvelApp__React/static/media/ironMan404.a42bbd2087ae7da19980.gif",
+    "static/media/Marvel.gif": "/marvelApp__React/static/media/Marvel.f3c85a8b070a9f674cce.gif",
+    "static/media/decorationFalcon.png": "/marvelApp__React/static/media/decorationFalcon.a7be48754825aec5f0a1.png",
+    "static/media/ironMan.png": "/marvelApp__React/static/media/ironMan.a94c9e28ff728327d861.png",
+    "static/media/decorationSpiderMan.png": "/marvelApp__React/static/media/decorationSpiderMan.a4ee3eda10e5ea6dc331.png",
+    "static/media/decorationVision.png": "/marvelApp__React/static/media/decorationVision.8de497492999c5d20b03.png",
+    "static/media/RandomChar-mjolnerShild.png": "/marvelApp__React/static/media/RandomChar-mjolnerShild.439ab19cfabed7d9d9b8.png",
+    "static/media/marvelIcon.jpg": "/marvelApp__React/static/media/marvelIcon.dd9b81e060c773c65315.jpg",
+    "index.html": "/marvelApp__React/index.html",
+    "main.6582ae7c.css.map": "/marvelApp__React/static/css/main.6582ae7c.css.map",
+    "main.fb6ca70e.js.map": "/marvelApp__React/static/js/main.fb6ca70e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6582ae7c.css",
+    "static/js/main.fb6ca70e.js"
+  ]
+}
