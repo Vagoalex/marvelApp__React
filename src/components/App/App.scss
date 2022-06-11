@@ -19,6 +19,7 @@
   }
 
   .decoration-vision {
+    width: 41%;
     position: absolute;
     bottom: 10px;
     right: -270px;
@@ -26,8 +27,18 @@
 
     animation: slide-wheel 4s linear infinite;
     animation-direction: alternate;
+
+    @media screen and (max-width: $mediaExtraLarge) {
+      width: 35%;
+      right: -190px;
+    }
+    @media screen and (max-width: $mediaBig) {
+      width: 32%;
+      right: -149px;
+    }
   }
   .decoration-falcon {
+    width: 40%;
     position: absolute;
     top: 10px;
     left: -365px;
@@ -37,23 +48,56 @@
     animation-name: slide-top;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+
+    @media screen and (max-width: $mediaExtraLarge) {
+      width: 35%;
+      left: -285px;
+    }
+    @media screen and (max-width: $mediaBig) {
+      width: 30%;
+      left: -208px;
+    }
   }
   .decoration-iron-Man {
+    width: 31%;
     position: absolute;
     top: -210px;
-    right: -365px;
+    right: -253px;
     z-index: -1;
 
     animation-duration: 4s;
     animation-name: slide-bottom;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+
+    @media screen and (max-width: $mediaExtraLarge) {
+      width: 26%;
+      right: -190px;
+    }
+    @media screen and (max-width: $mediaBig) {
+      width: 24%;
+      right: -150px;
+    }
   }
   .decoration-spider-man {
+    width: 35%;
     position: absolute;
     bottom: 73px;
     left: -386px;
     z-index: -1;
+
+    @media screen and (max-width: $mediaExtraLarge) {
+      width: 30%;
+      left: -330px;
+    }
+    @media screen and (max-width: $mediaLarge) {
+      width: 30%;
+      left: -301px;
+    }
+    @media screen and (max-width: $mediaBig) {
+      width: 24%;
+      left: -229px;
+    }
   }
 }
 
@@ -65,6 +109,18 @@
 .wrapper {
   max-width: 1140px;
   margin: 0 auto;
+
+  transition: all 0.5s ease;
+
+  @media screen and (max-width: $mediaLarge) {
+    max-width: 1050px;
+  }
+  @media screen and (max-width: $mediaBig) {
+    max-width: 990px;
+  }
+  @media screen and (max-width: $mediaMediumWell) {
+    max-width: 850px;
+  }
 }
 
 .char-content {
@@ -107,12 +163,14 @@
 
 @keyframes slide-bottom {
   from {
-    top: -210px;
-    right: -365px;
+    // top: -210px;
+    // right: -365px;
+    transform: translateY(-2rem) translateX(3rem);
   }
 
   to {
-    top: -160px;
-    right: -195px;
+    // top: -160px;
+    // right: -195px;
+    transform: translateY(5rem) translateX(-2rem);
   }
 }

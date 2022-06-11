@@ -99,4 +99,8 @@
     outline: 1px solid transparent;
     transform: translateY(-5px);
   }
+
+  @media screen and (max-width: $mediaMediumWell) {
+    font-size: 12px;
+  }
 }

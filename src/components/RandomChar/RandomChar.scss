@@ -1,3 +1,5 @@
+@import '../../style/variables.scss';
+
 .RandomChar {
   display: flex;
 }
@@ -19,6 +21,13 @@
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
   padding: 35px 35px 35px 40px;
+
+  @media screen and (max-width: $mediaLarge) {
+    padding: 30px 30px 30px 35px;
+  }
+  @media screen and (max-width: $mediaMediumWell) {
+    padding: 25px 25px 25px 30px;
+  }
 }
 .character-img {
   width: 180px;
@@ -27,6 +36,15 @@
   border: 1px solid rgb(125, 125, 125);
   border-radius: 7px;
   transition: all 0.5s ease;
+
+  @media screen and (max-width: $mediaBig) {
+    width: 160px;
+    height: 160px;
+  }
+  @media screen and (max-width: $mediaMediumWell) {
+    width: 140px;
+    height: 140px;
+  }
 }
 .character-img:hover {
   transform: scale(1.04);
@@ -43,23 +61,23 @@
     text-transform: uppercase;
 
     color: #000000;
+
+    @media screen and (max-width: $mediaMediumWell) {
+      font-size: 18px;
+    }
   }
   &__desc {
     margin: 10px 0px;
     padding-bottom: 50px;
     text-align: justify;
+
+    @media screen and (max-width: $mediaMediumWell) {
+      font-size: 12px;
+      margin: 0px;
+    }
   }
 }
 .character-links {
-  // &__link {
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 85%;
-  // }
-  // &__link:first-child {
-  //   bottom: 0;
-  //   left: 0;
-  // }
   .first-link {
     position: absolute;
     bottom: 0;
@@ -85,6 +103,10 @@
   border-top-left-radius: 0px;
   position: relative;
   padding: 35px 40px;
+
+  @media screen and (max-width: $mediaLarge) {
+    padding: 30px 30px;
+  }
 }
 .randomizer-top {
   &__title {
@@ -106,6 +128,10 @@
   transition: all 0.9s ease;
   color: #ffffff;
   cursor: default;
+
+  @media screen and (max-width: $mediaBig) {
+    font-size: 20px;
+  }
 }
 .random-title:hover {
   filter: drop-shadow(10px 5px 20px #9f0013);
