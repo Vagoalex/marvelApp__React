@@ -1,103 +1,65 @@
 @import './variables';
 
 .button {
-  min-width: 101px;
-  color: #fff;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 14px;
-  transition: 0.3s transform;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+  position: relative;
   display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
   text-decoration: none;
-  &__long {
-    display: block;
-    width: 170px;
-    margin: 45px auto 0 auto;
-  }
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  padding: 1.3em 3.3em;
+  border: 1px solid rgb(80, 32, 0);
+  border-radius: 5px;
+  outline: none;
+  background: linear-gradient(rgb(255, 0, 0), rgb(104, 1, 1) 80%);
+  box-shadow: 0 6px rgb(52, 0, 0), 5px 8px 10px rgba(0, 0, 0, 0.8),
+    inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(255, 237, 237, 0.5);
+  transition: 0.2s;
+  // background-color: #d8021b;
+  cursor: pointer;
+
   .inner {
-    position: relative;
-    background-color: $main-color;
-    line-height: 18px;
-    padding: 0 18px;
-    transition: none;
-    &::before {
-      border-color: $main-color transparent;
-      border-style: solid;
-      border-width: 0 0 10px 10px;
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      top: -10px;
-      transition: none;
-    }
-    &::after {
-      border-color: $main-color transparent;
-      border-style: solid;
-      border-width: 0 0 10px 10px;
-      content: '';
-      display: block;
-      position: absolute;
-      right: 0;
-      bottom: -10px;
-      transform: rotate(180deg);
-      transition: none;
-    }
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
-  &__main,
-  &__secondary {
-    &:hover {
-      color: #fff;
+
+  &__long {
+    padding: 1.3em 6.5em;
+
+    @media screen and (max-width: $mediaMediumWell) {
+      padding: 1.3em 5.5em;
     }
   }
   &__secondary {
-    .inner {
-      background-color: $secondary-color;
-      &::before {
-        border-color: $secondary-color transparent;
-        transition: none;
-      }
-      &::after {
-        border-color: $secondary-color transparent;
-        transition: none;
-      }
-    }
+    background: linear-gradient(rgb(92, 92, 92), rgb(135, 134, 134) 80%);
+    box-shadow: 0 6px rgb(31, 30, 30), 5px 8px 10px rgba(0, 0, 0, 0.8),
+      inset 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 0 3px rgba(255, 237, 237, 0.5);
   }
-  &::before {
-    content: '';
-    display: block;
-    height: 10px;
-    margin-left: 10px;
-    transition: none;
-  }
-  &::after {
-    content: '';
-    display: block;
-    height: 10px;
-    margin-right: 10px;
-    transition: none;
-  }
-  &.button__main::before,
-  &.button__main::after {
-    background-color: $main-color;
-  }
-  &.button__secondary::before,
-  &.button__secondary::after {
-    background-color: $secondary-color;
-  }
+
   &:hover {
-    transform: translateY(-5px);
+    background: rgb(250, 37, 37)
+      linear-gradient(rgb(221, 36, 36), rgb(146, 0, 0) 80%);
+  }
+  &:active {
+    background: rgb(250, 37, 37)
+      linear-gradient(rgb(221, 36, 36), rgb(146, 0, 0) 80%);
+    box-shadow: 0 2px rgb(86, 38, 6), 0 1px 6px rgba(0, 0, 0, 0.4),
+      inset 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 0 3px rgba(255, 255, 255, 0.5);
+    -webkit-transform: translate(0, 4px);
+    transform: translate(0, 4px);
   }
 
   &:disabled {
     filter: grayscale(0.5);
   }
   &:focus {
-    outline: 1px solid transparent;
-    transform: translateY(-5px);
+    outline: 2px solid rgba(255, 255, 255, 0.5);
   }
 
   @media screen and (max-width: $mediaMediumWell) {

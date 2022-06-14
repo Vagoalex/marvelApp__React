@@ -27,6 +27,7 @@
   }
   @media screen and (max-width: $mediaMediumWell) {
     padding: 25px 25px 25px 30px;
+    border-right: 2px solid #000;
   }
 }
 .character-img {
@@ -63,7 +64,7 @@
     color: #000000;
 
     @media screen and (max-width: $mediaMediumWell) {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
   &__desc {
@@ -107,6 +108,10 @@
   @media screen and (max-width: $mediaLarge) {
     padding: 30px 30px;
   }
+  @media screen and (max-width: $mediaMediumWell) {
+    border-left: 2px solid #000;
+    padding: 25px 25px;
+  }
 }
 .randomizer-top {
   &__title {
@@ -132,6 +137,10 @@
   @media screen and (max-width: $mediaBig) {
     font-size: 20px;
   }
+
+  @media screen and (max-width: $mediaMediumWell) {
+    font-size: 18px;
+  }
 }
 .random-title:hover {
   filter: drop-shadow(10px 5px 20px #9f0013);
@@ -143,7 +152,13 @@
   right: -8%;
   width: 203px;
   height: 189px;
+
   transition: all 0.9s ease;
+
+  @media screen and (max-width: $mediaMediumWell) {
+    width: 160px;
+    height: 155px;
+  }
 }
 .randomizer-img:hover {
   transform: scale(1.1) rotate(-3deg);

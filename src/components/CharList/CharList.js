@@ -78,28 +78,30 @@ const CharList = (props) => {
         {content}
       </ul>
 
-      <button
-        disabled={newCharsLoading}
-        onClick={() => onRequestChars(offset)}
-        className='CharList-cards-more button button__main button__long'
-        style={{ visibility: charEnded ? 'hidden' : '' }}
-      >
-        <div className='inner'>Load More</div>
-      </button>
+      <div className='CharList-assets'>
+        <button
+          disabled={newCharsLoading}
+          onClick={() => onRequestChars(offset)}
+          className='CharList-cards-more button button__long'
+          style={{ visibility: charEnded ? 'hidden' : '' }}
+        >
+          <div className='inner'>Load More</div>
+        </button>
 
-      <div
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            onScrollToTop();
-          }
-        }}
-        onClick={onScrollToTop}
-        className='scroll'
-      >
-        <span className='scroll-up'>
-          <span className='mouse-wheel'></span>
-        </span>
+        <div
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              onScrollToTop();
+            }
+          }}
+          onClick={onScrollToTop}
+          className='scroll'
+        >
+          <span className='scroll-up'>
+            <span className='mouse-wheel'></span>
+          </span>
+        </div>
       </div>
     </section>
   );

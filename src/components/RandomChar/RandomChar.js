@@ -7,6 +7,9 @@ import MarvelService from '../../services/MarvelService';
 
 import './RandomChar.scss';
 
+import btnRed from '../../assets/icons/btnDefaultRed.png';
+import btnRedSvg from '../../assets/icons/btnDefaultRed.svg';
+
 import randomizerDecorate from '../../assets/icons/RandomChar-mjolnerShild.png';
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
@@ -40,15 +43,8 @@ const RandomChar = (props) => {
 
   useEffect(() => {
     updateChar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // useEffect(() => {
-  //   let timerId = setInterval(updateChar, 60000);
-
-  //   return () => {
-  //      clearInterval(timerId);
-  //   }
-  // }, [])
 
   const errorMessage = error ? <ErrorMessage /> : null;
   const spinner = loading ? <LoadingMarvel /> : null;
@@ -76,7 +72,7 @@ const RandomChar = (props) => {
           </h3>
           <button
             onClick={updateChar}
-            className='randomizer-bottom__button button button__main'
+            className='randomizer-bottom__button button'
             type='button'
           >
             <div className='inner'>Try it</div>
@@ -106,7 +102,7 @@ const View = ({ char }) => {
         <p className='character-info__desc'>{description}</p>
         <div className='character-links'>
           <a
-            className='character-links__link first-link button button__main'
+            className='character-links__link first-link button'
             href={homepage}
             target='_blank'
             rel='noreferrer'
