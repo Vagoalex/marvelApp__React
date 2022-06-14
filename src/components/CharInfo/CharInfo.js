@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import MarvelService from '../../services/MarvelService';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
@@ -8,68 +8,56 @@ import './CharInfo.scss';
 
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
-export class CharInfo extends Component {
-  state = {
-    char: null,
-    loading: false,
-    error: false,
-  };
+const CharInfo = (props) => {
+  const [char, setChar] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  marvelService = new MarvelService();
+  const marvelService = new MarvelService();
 
-  componentDidMount() {
-    this.updateChar();
-  }
+  useEffect(() => {
+    updateChar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.charID]);
 
-  componentDidUpdate(prevProps) {
-    if (this.props.charID !== prevProps.charID) {
-      this.updateChar();
-    }
-  }
-
-  updateChar = () => {
-    const { charID } = this.props;
+  const updateChar = () => {
+    const { charID } = props;
     if (!charID) {
       return;
     }
 
-    this.onCharLoading();
-    this.marvelService
-      .getCharacterById(charID)
-      .then(this.onCharLoaded)
-      .catch(this.onError);
+    onCharLoading();
+    marvelService.getCharacterById(charID).then(onCharLoaded).catch(onError);
   };
 
-  onCharLoaded = (char) => {
-    this.setState({ char, loading: false });
+  const onCharLoaded = (char) => {
+    setChar(char);
+    setLoading(() => false);
   };
 
-  onCharLoading = () => {
-    this.setState({ loading: true });
+  const onCharLoading = () => {
+    setLoading(() => true);
   };
 
-  onError = () => {
-    this.setState({ loading: false, error: true });
+  const onError = () => {
+    setLoading(() => false);
+    setError(() => true);
   };
 
-  render() {
-    const { char, loading, error } = this.state;
+  const skeleton = char || loading || error ? null : <Skeleton />;
+  const loadingContent = loading ? <LoadingMarvel /> : null;
+  const errorContent = error ? <ErrorMessage /> : null;
+  const content = !(loading || error || !char) ? <View char={char} /> : null;
 
-    const skeleton = char || loading || error ? null : <Skeleton />;
-    const loadingContent = loading ? <LoadingMarvel /> : null;
-    const errorContent = error ? <ErrorMessage /> : null;
-    const content = !(loading || error || !char) ? <View char={char} /> : null;
-
-    return (
-      <section className='CharInfo'>
-        {skeleton}
-        {loadingContent}
-        {errorContent}
-        {content}
-      </section>
-    );
-  }
-}
+  return (
+    <section className='CharInfo'>
+      {skeleton}
+      {loadingContent}
+      {errorContent}
+      {content}
+    </section>
+  );
+};
 
 const View = ({ char }) => {
   const { name, description, thumbnail, homepage, wiki, comics } = char;

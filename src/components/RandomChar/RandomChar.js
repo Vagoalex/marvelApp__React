@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
@@ -10,89 +10,87 @@ import './RandomChar.scss';
 import randomizerDecorate from '../../assets/icons/RandomChar-mjolnerShild.png';
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
-export class RandomChar extends Component {
-  state = {
-    char: {},
-    loading: true,
-    error: false,
+const RandomChar = (props) => {
+  const [char, setChar] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const marvelService = new MarvelService();
+
+  const onCharLoaded = (char) => {
+    setChar(char);
+    setLoading(() => false);
   };
 
-  marvelService = new MarvelService();
-
-  onCharLoaded = (char) => {
-    this.setState({ char, loading: false });
+  const onCharLoading = () => {
+    setLoading(() => true);
   };
 
-  onCharLoading = () => {
-    this.setState({ loading: true });
+  const onError = () => {
+    setLoading(() => false);
+    setError(() => true);
   };
 
-  onError = () => {
-    this.setState({ loading: false, error: true });
-  };
-
-  updateChar = () => {
+  const updateChar = () => {
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-    this.onCharLoading();
-    this.marvelService
-      .getCharacterById(id)
-      .then(this.onCharLoaded)
-      .catch(this.onError);
+
+    onCharLoading();
+    marvelService.getCharacterById(id).then(onCharLoaded).catch(onError);
   };
 
-  componentDidMount() {
-    this.updateChar();
-    // this.timerId = setInterval(this.updateChar, 60000); // TO DO: update this Interval
-  }
+  useEffect(() => {
+    updateChar();
+  }, []);
 
-  componentWillUnmount() {
-    clearInterval(this.timerId);
-  }
+  // useEffect(() => {
+  //   let timerId = setInterval(updateChar, 60000);
 
-  render() {
-    const { char, loading, error } = this.state;
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading ? <LoadingMarvel /> : null;
-    const content = !(loading || error) ? <View char={char} /> : null;
+  //   return () => {
+  //      clearInterval(timerId);
+  //   }
+  // }, [])
 
-    return (
-      <section className='RandomChar wrapper'>
-        <div className='RandomChar__character-info'>
-          {errorMessage}
-          {spinner}
-          {content}
+  const errorMessage = error ? <ErrorMessage /> : null;
+  const spinner = loading ? <LoadingMarvel /> : null;
+  const content = !(loading || error) ? <View char={char} /> : null;
+
+  return (
+    <section className='RandomChar wrapper'>
+      <div className='RandomChar__character-info'>
+        {errorMessage}
+        {spinner}
+        {content}
+      </div>
+      <div className='RandomChar__randomizer'>
+        <div className='randomizer-top'>
+          <h3 className='randomizer-top__title random-title'>
+            Random character for today!
+          </h3>
+          <h3 className='randomizer-top__title  random-title'>
+            Do you want to get to know him better?
+          </h3>
         </div>
-        <div className='RandomChar__randomizer'>
-          <div className='randomizer-top'>
-            <h3 className='randomizer-top__title random-title'>
-              Random character for today!
-            </h3>
-            <h3 className='randomizer-top__title  random-title'>
-              Do you want to get to know him better?
-            </h3>
-          </div>
-          <div className='randomizer-bottom'>
-            <h3 className='randomizer-bottom__title  random-title'>
-              Or choose another one
-            </h3>
-            <button
-              onClick={this.updateChar}
-              className='randomizer-bottom__button button button__main'
-              type='button'
-            >
-              <div className='inner'>Try it</div>
-            </button>
-          </div>
-          <img
-            className='randomizer-img'
-            src={randomizerDecorate}
-            alt='mjolnir'
-          />
+        <div className='randomizer-bottom'>
+          <h3 className='randomizer-bottom__title  random-title'>
+            Or choose another one
+          </h3>
+          <button
+            onClick={updateChar}
+            className='randomizer-bottom__button button button__main'
+            type='button'
+          >
+            <div className='inner'>Try it</div>
+          </button>
         </div>
-      </section>
-    );
-  }
-}
+        <img
+          className='randomizer-img'
+          src={randomizerDecorate}
+          alt='mjolnir'
+        />
+      </div>
+    </section>
+  );
+};
 
 const View = ({ char }) => {
   const { name, description, thumbnail, homepage, wiki } = char;

@@ -1,4 +1,4 @@
-import { Fragment, Component } from 'react';
+import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import RandomChar from '../RandomChar/RandomChar';
@@ -13,66 +13,61 @@ import decorationSpiderMan from '../../assets/images/decorations/decorationSpide
 
 import './App.scss';
 
-export class App extends Component {
-  state = {
-    selectedChar: null,
-  };
+const App = () => {
+  const [selectedChar, setSelectedChar] = useState(null);
 
-  onScrollToTop = () => {
+  const onScrollToTop = () => {
     window.scrollTo({ top: 150 });
   };
 
-  onCharSelected = (id) => {
-    this.setState({ selectedChar: id });
-    this.onScrollToTop();
+  const onCharSelected = (id) => {
+    setSelectedChar(id);
+    onScrollToTop();
   };
 
-  render() {
-    const { selectedChar } = this.state;
-    return (
-      <Fragment>
-        <header className='header'>
-          <Header />
-          <ErrorBoundary>
-            <RandomChar />
-          </ErrorBoundary>
-        </header>
-        <main className='main'>
-          <div className='container wrapper'>
-            <div className='main__content char-content'>
-              <ErrorBoundary>
-                <CharList onCharSelected={this.onCharSelected} />
-              </ErrorBoundary>
-              <ErrorBoundary>
-                <CharInfo charID={selectedChar} />
-              </ErrorBoundary>
-              <img
-                className='decoration-vision'
-                src={decorationVision}
-                alt='decoration-vision'
-              />
-              <img
-                className='decoration-falcon'
-                src={decorationFalcon}
-                alt='decorationFalcon'
-              />
-              <img
-                className='decoration-iron-Man'
-                src={decorationIronMan}
-                alt='decorationIronMan'
-              />
-              <img
-                className='decoration-spider-man'
-                src={decorationSpiderMan}
-                alt='decorationSpiderMan'
-              />
-            </div>
+  return (
+    <Fragment>
+      <header className='header'>
+        <Header />
+        <ErrorBoundary>
+          <RandomChar />
+        </ErrorBoundary>
+      </header>
+      <main className='main'>
+        <div className='container wrapper'>
+          <div className='main__content char-content'>
+            <ErrorBoundary>
+              <CharList onCharSelected={onCharSelected} />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <CharInfo charID={selectedChar} />
+            </ErrorBoundary>
+            <img
+              className='decoration-vision'
+              src={decorationVision}
+              alt='decoration-vision'
+            />
+            <img
+              className='decoration-falcon'
+              src={decorationFalcon}
+              alt='decorationFalcon'
+            />
+            <img
+              className='decoration-iron-Man'
+              src={decorationIronMan}
+              alt='decorationIronMan'
+            />
+            <img
+              className='decoration-spider-man'
+              src={decorationSpiderMan}
+              alt='decorationSpiderMan'
+            />
           </div>
-        </main>
-      </Fragment>
-    );
-  }
-}
+        </div>
+      </main>
+    </Fragment>
+  );
+};
 
 App.propTypes = {
   onCharSelected: PropTypes.func,

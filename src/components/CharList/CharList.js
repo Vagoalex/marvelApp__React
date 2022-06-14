@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import MarvelService from '../../services/MarvelService';
 import CharListItem from '../CharListItem/CharListItem';
 
@@ -7,119 +7,103 @@ import './CharList.scss';
 import charItemLoadingGif from '../../assets/gifs/CharListItemLoading.gif';
 import ironMan404 from '../../assets/gifs/ironMan404.gif';
 
-export class CharList extends Component {
-  state = {
-    chars: [],
-    loading: true,
-    error: false,
-    newCharsLoading: false,
-    offset: 0,
-    charEnded: false,
-  };
-  _timeout = null;
+const CharList = (props) => {
+  const [chars, setChars] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [newCharsLoading, setNewCharsLoading] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [charEnded, setCharEnded] = useState(false);
 
-  marvelService = new MarvelService();
+  const marvelService = new MarvelService();
 
-  componentDidMount() {
-    this.onRequestChars();
-  }
+  useEffect(() => {
+    onRequestChars();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  componentWillUnmount() {
-    clearInterval(this._timeout);
-  }
-
-  onRequestChars = (offset) => {
-    this.onNewCharsLoading();
-    this.marvelService
-      .getAllCharacters(offset)
-      .then(this.onCharsLoaded)
-      .catch(this.onError);
+  const onRequestChars = (offset) => {
+    onNewCharsLoading();
+    marvelService.getAllCharacters(offset).then(onCharsLoaded).catch(onError);
   };
 
-  onCharsLoaded = (newChars) => {
+  const onCharsLoaded = (newChars) => {
     let ended = false;
     if (newChars.length < 9) {
       ended = true;
     }
 
-    this.setState(({ offset, chars }) => ({
-      chars: [...chars, ...newChars],
-      loading: false,
-      newCharsLoading: false,
-      offset: offset + 9,
-      charEnded: ended,
-    }));
+    setChars((chars) => [...chars, ...newChars]);
+    setLoading(() => false);
+    setNewCharsLoading(() => false);
+    setOffset((offset) => offset + 9);
+    setCharEnded(() => ended);
   };
 
-  onNewCharsLoading = () => {
-    this.setState({ newCharsLoading: true });
+  const onNewCharsLoading = () => {
+    setNewCharsLoading(() => true);
   };
 
-  onScrollToTop = () => {
+  const onScrollToTop = () => {
     window.scrollTo({ top: 0 });
   };
 
-  onError = () => {
-    this.setState({
-      error: true,
-      loading: false,
-    });
+  const onError = () => {
+    setLoading(() => false);
+    setError(() => true);
   };
 
-  render() {
-    const { onCharSelected } = this.props;
-    const { chars, loading, error, newCharsLoading, offset, charEnded } =
-      this.state;
-    const heroes = chars.map(({ id, ...data }) => (
-      <CharListItem
-        onCharSelected={onCharSelected}
-        key={id}
-        data={data}
-        id={id}
-      />
-    ));
+  const { onCharSelected } = props;
 
-    const statusArray = [...Array(9)].map((x, i) => (
-      <CharItemStatus loading={loading} error={error} key={i} />
-    ));
+  const heroes = chars.map(({ id, ...data }) => (
+    <CharListItem
+      onCharSelected={onCharSelected}
+      key={id}
+      data={data}
+      id={id}
+    />
+  ));
 
-    const status = error || loading ? statusArray : null;
-    const content = !(loading || error) ? heroes : null;
+  const statusArray = [...Array(9)].map((x, i) => (
+    <CharItemStatus loading={loading} error={error} key={i} />
+  ));
 
-    return (
-      <section className='CharList'>
-        <ul className='CharList-cards'>
-          {status}
-          {content}
-        </ul>
+  const status = error || loading ? statusArray : null;
+  const content = !(loading || error) ? heroes : null;
 
-        <button
-          disabled={newCharsLoading}
-          onClick={() => this.onRequestChars(offset)}
-          className='CharList-cards-more button button__main button__long'
-          style={{ visibility: charEnded ? 'hidden' : '' }}
-        >
-          <div className='inner'>Load More</div>
-        </button>
+  return (
+    <section className='CharList'>
+      <ul className='CharList-cards'>
+        {status}
+        {content}
+      </ul>
 
-        <div
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              this.onScrollToTop();
-            }
-          }}
-          onClick={this.onScrollToTop}
-          className='scroll'
-        >
-          <span className='scroll-up'>
-            <span className='mouse-wheel'></span>
-          </span>
-        </div>
-      </section>
-    );
-  }
-}
+      <button
+        disabled={newCharsLoading}
+        onClick={() => onRequestChars(offset)}
+        className='CharList-cards-more button button__main button__long'
+        style={{ visibility: charEnded ? 'hidden' : '' }}
+      >
+        <div className='inner'>Load More</div>
+      </button>
+
+      <div
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            onScrollToTop();
+          }
+        }}
+        onClick={onScrollToTop}
+        className='scroll'
+      >
+        <span className='scroll-up'>
+          <span className='mouse-wheel'></span>
+        </span>
+      </div>
+    </section>
+  );
+};
 
 const CharItemStatus = (props) => {
   const { loading } = props;
