@@ -64,7 +64,7 @@
     }
     &__link {
       position: absolute;
-      bottom: 32%;
+      bottom: 35%;
       left: 0;
 
       @media screen and (max-width: $mediaMediumWell) {
@@ -137,5 +137,48 @@
         font-size: 12px;
       }
     }
+  }
+}
+
+.scroll-to-bottom {
+  background: #d8021b;
+  padding: 0.5em 0.5em;
+  border-radius: 12px;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+
+  font-size: 20px;
+  z-index: 100;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+
+  .scroll-to-bottom__inner {
+    width: 20px;
+    height: 55px;
+    border: 2px solid #fff;
+    border-radius: 13px;
+    display: flex;
+
+    .mouse-wheel {
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: auto;
+      animation: move-wheel 1s reverse linear infinite;
+    }
+  }
+
+  @media screen and (max-width: $mediaMediumWell) {
+    right: 7%;
+    padding: 5px 10px;
   }
 }

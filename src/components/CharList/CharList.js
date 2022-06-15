@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/useMarvelService';
 import CharListItem from '../CharListItem/CharListItem';
 
 import './CharList.scss';
@@ -8,23 +8,33 @@ import charItemLoadingGif from '../../assets/gifs/CharListItemLoading.gif';
 import ironMan404 from '../../assets/gifs/ironMan404.gif';
 
 const CharList = (props) => {
+  const { getAllCharacters, loading, error, clearError } = useMarvelService();
+
+  const { onCharSelected } = props;
+
   const [chars, setChars] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [newCharsLoading, setNewCharsLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [charEnded, setCharEnded] = useState(false);
-
-  const marvelService = new MarvelService();
+  const [windowHeight, setWindowHeight] = useState(0);
 
   useEffect(() => {
+    onScrollToTop();
     onRequestChars();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    chars.length > 9 && chars.length !== 0 && onScrollToBottom();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chars]);
+
   const onRequestChars = (offset) => {
-    onNewCharsLoading();
-    marvelService.getAllCharacters(offset).then(onCharsLoaded).catch(onError);
+    clearError();
+    setNewCharsLoading(true);
+    getAllCharacters(offset).then(onCharsLoaded);
+    setWindowHeight(document.body.scrollHeight);
   };
 
   const onCharsLoaded = (newChars) => {
@@ -34,26 +44,17 @@ const CharList = (props) => {
     }
 
     setChars((chars) => [...chars, ...newChars]);
-    setLoading(() => false);
     setNewCharsLoading(() => false);
     setOffset((offset) => offset + 9);
     setCharEnded(() => ended);
   };
 
-  const onNewCharsLoading = () => {
-    setNewCharsLoading(() => true);
-  };
-
   const onScrollToTop = () => {
     window.scrollTo({ top: 0 });
   };
-
-  const onError = () => {
-    setLoading(() => false);
-    setError(() => true);
+  const onScrollToBottom = () => {
+    window.scrollTo(0, windowHeight);
   };
-
-  const { onCharSelected } = props;
 
   const heroes = chars.map(({ id, ...data }) => (
     <CharListItem
@@ -64,12 +65,12 @@ const CharList = (props) => {
     />
   ));
 
-  const statusArray = [...Array(9)].map((x, i) => (
-    <CharItemStatus loading={loading} error={error} key={i} />
-  ));
+  const statusArray = [...Array(chars.length === 0 ? 9 : chars.length)].map(
+    (x, i) => <CharItemStatus loading={loading} error={error} key={i} />
+  );
 
   const status = error || loading ? statusArray : null;
-  const content = !(loading || error) ? heroes : null;
+  const content = !(error || loading) ? heroes : null;
 
   return (
     <section className='CharList'>
@@ -88,7 +89,7 @@ const CharList = (props) => {
           <div className='inner'>Load More</div>
         </button>
 
-        <div
+        <button
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -101,7 +102,7 @@ const CharList = (props) => {
           <span className='scroll-up'>
             <span className='mouse-wheel'></span>
           </span>
-        </div>
+        </button>
       </div>
     </section>
   );

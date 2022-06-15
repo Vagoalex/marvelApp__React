@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/useMarvelService';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
 import Skeleton from '../Skeleton/Skeleton';
@@ -9,11 +9,9 @@ import './CharInfo.scss';
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
 const CharInfo = (props) => {
-  const [char, setChar] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { getCharacterById, loading, error, clearError } = useMarvelService();
 
-  const marvelService = new MarvelService();
+  const [char, setChar] = useState(null);
 
   useEffect(() => {
     updateChar();
@@ -26,22 +24,12 @@ const CharInfo = (props) => {
       return;
     }
 
-    onCharLoading();
-    marvelService.getCharacterById(charID).then(onCharLoaded).catch(onError);
+    clearError();
+    getCharacterById(charID).then(onCharLoaded);
   };
 
   const onCharLoaded = (char) => {
     setChar(char);
-    setLoading(() => false);
-  };
-
-  const onCharLoading = () => {
-    setLoading(() => true);
-  };
-
-  const onError = () => {
-    setLoading(() => false);
-    setError(() => true);
   };
 
   const skeleton = char || loading || error ? null : <Skeleton />;
@@ -61,6 +49,11 @@ const CharInfo = (props) => {
 
 const View = ({ char }) => {
   const { name, description, thumbnail, homepage, wiki, comics } = char;
+
+  const onScrollToBottom = () => {
+    window.scrollTo(0, document.body.scrollHeight);
+  };
+
   const comicsContent = comics.map(({ name }, i) => {
     if (i > 10) {
       return null;
@@ -77,6 +70,20 @@ const View = ({ char }) => {
   return (
     <>
       <div className='char-info'>
+        <button
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              onScrollToBottom();
+            }
+          }}
+          onClick={onScrollToBottom}
+          className='scroll-to-bottom'
+        >
+          <span className='scroll-to-bottom__inner'>
+            <span className='mouse-wheel'></span>
+          </span>
+        </button>
         <img className='char-info__img' src={image} alt={name} />
         <div className='char-info-inner'>
           <h3 className='char-info-inner__title'>{name}</h3>

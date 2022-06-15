@@ -3,52 +3,41 @@ import PropTypes from 'prop-types';
 
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/useMarvelService';
 
 import './RandomChar.scss';
-
-import btnRed from '../../assets/icons/btnDefaultRed.png';
-import btnRedSvg from '../../assets/icons/btnDefaultRed.svg';
 
 import randomizerDecorate from '../../assets/icons/RandomChar-mjolnerShild.png';
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
 const RandomChar = (props) => {
-  const [char, setChar] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [char, setChar] = useState(null);
 
-  const marvelService = new MarvelService();
-
-  const onCharLoaded = (char) => {
-    setChar(char);
-    setLoading(() => false);
-  };
-
-  const onCharLoading = () => {
-    setLoading(() => true);
-  };
-
-  const onError = () => {
-    setLoading(() => false);
-    setError(() => true);
-  };
-
-  const updateChar = () => {
-    const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-
-    onCharLoading();
-    marvelService.getCharacterById(id).then(onCharLoaded).catch(onError);
-  };
+  const { getCharacterById, loading, error, clearError } = useMarvelService();
 
   useEffect(() => {
     updateChar();
+    const timerId = setInterval(updateChar, 120000);
+
+    return () => {
+      clearInterval(timerId);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onCharLoaded = (char) => {
+    setChar(char);
+  };
+
+  const updateChar = () => {
+    clearError();
+    const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
+    getCharacterById(id).then(onCharLoaded);
+  };
+
   const errorMessage = error ? <ErrorMessage /> : null;
   const spinner = loading ? <LoadingMarvel /> : null;
-  const content = !(loading || error) ? <View char={char} /> : null;
+  const content = !(loading || error || !char) ? <View char={char} /> : null;
 
   return (
     <section className='RandomChar wrapper'>
