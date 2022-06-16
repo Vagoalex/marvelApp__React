@@ -57,6 +57,9 @@
       color: #fff;
       text-transform: uppercase;
 
+      @media screen and (max-width: $mediaBig) {
+        font-size: 18px;
+      }
       @media screen and (max-width: $mediaMediumWell) {
         font-size: 16px;
         text-align: center;
@@ -140,8 +143,10 @@
   }
 }
 
-.scroll-to-bottom {
-  background: #d8021b;
+.CharInfo-scroll {
+  background: linear-gradient(rgb(255, 0, 0), rgb(104, 1, 1) 80%);
+  box-shadow: 0 6px rgb(52, 0, 0), 5px 8px 10px rgba(0, 0, 0, 0.8),
+    inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(255, 237, 237, 0.5);
   padding: 0.5em 0.5em;
   border-radius: 12px;
   position: absolute;
@@ -157,14 +162,16 @@
 
   cursor: pointer;
 
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 
-  .scroll-to-bottom__inner {
+  &__bottom {
     width: 20px;
     height: 55px;
     border: 2px solid #fff;
     border-radius: 13px;
     display: flex;
+
+    transition: all 0.3s ease;
 
     .mouse-wheel {
       display: block;
@@ -173,12 +180,33 @@
       background-color: #fff;
       border-radius: 50%;
       margin: auto;
+
+      transition: all 0.3s ease;
       animation: move-wheel 1s reverse linear infinite;
     }
   }
 
+  &:hover {
+    background: rgb(250, 37, 37)
+      linear-gradient(rgb(221, 36, 36), rgb(146, 0, 0) 80%);
+  }
+  &:hover .CharInfo-scroll__bottom {
+    border: 2px solid #000;
+  }
+  &:hover .mouse-wheel {
+    background-color: #000;
+  }
+  &:active {
+    background: rgb(250, 37, 37)
+      linear-gradient(rgb(221, 36, 36), rgb(146, 0, 0) 80%);
+    box-shadow: 0 2px rgb(86, 38, 6), 0 1px 6px rgba(0, 0, 0, 0.4),
+      inset 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 0 3px rgba(255, 255, 255, 0.5);
+    -webkit-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+  }
+
   @media screen and (max-width: $mediaMediumWell) {
-    right: 7%;
-    padding: 5px 10px;
+    padding: 0.3em 0.4em;
   }
 }

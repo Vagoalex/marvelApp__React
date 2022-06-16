@@ -1,6 +1,29 @@
 import './Header.scss';
 
-const Header = (props) => {
+const Header = ({ onSelectPage, page }) => {
+  const navElements = ['Characters', '/', 'Comics'];
+
+  const links = navElements.map((item) => {
+    const activeClass = 'nav__item--active';
+
+    const defaultClass = 'nav__item';
+
+    return item === '/' ? (
+      <span key={item} className='nav__slash'>
+        /
+      </span>
+    ) : (
+      <li
+        onClick={onSelectPage}
+        tabIndex={0}
+        key={item}
+        className={`${defaultClass} ${item === page ? activeClass : ''}`}
+      >
+        {item}
+      </li>
+    );
+  });
+
   return (
     <div className='Header wrapper'>
       <h1 className='Header__title'>
@@ -10,15 +33,7 @@ const Header = (props) => {
         information portal
       </h1>
       <nav className='Header__nav'>
-        <ul className='nav'>
-          <li tabIndex={0} className='nav__item  nav__item--active'>
-            Characters
-          </li>
-          <span className='nav__slash'>/</span>
-          <li tabIndex={0} className='nav__item'>
-            Comics
-          </li>
-        </ul>
+        <ul className='nav'>{links}</ul>
       </nav>
     </div>
   );

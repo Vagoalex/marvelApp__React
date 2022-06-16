@@ -2,6 +2,18 @@
 
 .RandomChar {
   display: flex;
+  position: relative;
+  top: -255px;
+
+  @media screen and (max-width: $mediaLarge) {
+    top: -245px;
+  }
+  @media screen and (max-width: $mediaBig) {
+    top: -225px;
+  }
+  @media screen and (max-width: $mediaMediumWell) {
+    top: -195px;
+  }
 }
 
 .RandomChar__character-info {

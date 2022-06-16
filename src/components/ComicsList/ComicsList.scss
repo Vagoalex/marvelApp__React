@@ -1,28 +1,27 @@
 @import '../../style/variables.scss';
 
-.CharList {
-  flex: 60%;
+.ComicsList {
   position: relative;
 }
-.CharList-cards {
+.ComicsList-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 
-  grid-column-gap: 0em;
+  grid-column-gap: 2em;
   grid-row-gap: 2em;
 }
 
-.CharList-assets {
+.ComicsList-assets {
   margin-top: 40px;
   display: flex;
   justify-content: center;
 }
 
-.CharList-cards-more {
+.ComicsList-cards-more {
   transition: all 0.5s ease;
 }
 
-.CharList-scroll {
+.ComicsList-scroll {
   background: linear-gradient(rgb(255, 0, 0), rgb(104, 1, 1) 80%);
   box-shadow: 0 6px rgb(52, 0, 0), 5px 8px 10px rgba(0, 0, 0, 0.8),
     inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(255, 237, 237, 0.5);
@@ -30,7 +29,7 @@
   border-radius: 12px;
   position: absolute;
   bottom: 0%;
-  right: 5%;
+  right: 0%;
 
   font-size: 20px;
   z-index: 100;
@@ -68,7 +67,7 @@
     background: rgb(250, 37, 37)
       linear-gradient(rgb(221, 36, 36), rgb(146, 0, 0) 80%);
   }
-  &:hover .CharList-scroll__up {
+  &:hover .ComicsList-scroll__up {
     border: 2px solid #000;
   }
   &:hover .mouse-wheel {

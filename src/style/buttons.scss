@@ -32,16 +32,11 @@
       padding: 1.3em 5.5em;
     }
   }
-  &__secondary {
-    background: linear-gradient(rgb(92, 92, 92), rgb(135, 134, 134) 80%);
-    box-shadow: 0 6px rgb(31, 30, 30), 5px 8px 10px rgba(0, 0, 0, 0.8),
-      inset 0 1px rgba(255, 255, 255, 0.3),
-      inset 0 0 3px rgba(255, 237, 237, 0.5);
-  }
 
   &:hover {
     background: rgb(250, 37, 37)
       linear-gradient(rgb(221, 36, 36), rgb(146, 0, 0) 80%);
+    text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.8);
   }
   &:active {
     background: rgb(250, 37, 37)
@@ -51,6 +46,28 @@
       inset 0 0 3px rgba(255, 255, 255, 0.5);
     -webkit-transform: translate(0, 4px);
     transform: translate(0, 4px);
+  }
+
+  &__secondary {
+    background: linear-gradient(rgb(92, 92, 92), rgb(135, 134, 134) 80%);
+    box-shadow: 0 6px rgb(31, 30, 30), 5px 8px 10px rgba(0, 0, 0, 0.8),
+      inset 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 0 3px rgba(255, 237, 237, 0.5);
+
+    &:hover {
+      background: rgb(92, 92, 92)
+        linear-gradient(rgb(92, 92, 92), rgb(64, 64, 64) 80%);
+      text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.8);
+    }
+    &:active {
+      background: rgb(92, 92, 92)
+        linear-gradient(rgb(92, 92, 92), rgb(64, 64, 64) 80%);
+      box-shadow: 0 2px rgb(0, 0, 0), 0 1px 6px rgba(0, 0, 0, 0.6),
+        inset 0 1px rgba(255, 255, 255, 0.3),
+        inset 0 0 3px rgba(255, 255, 255, 0.5);
+      -webkit-transform: translate(0, 4px);
+      transform: translate(0, 4px);
+    }
   }
 
   &:disabled {

@@ -78,9 +78,9 @@ const View = ({ char }) => {
             }
           }}
           onClick={onScrollToBottom}
-          className='scroll-to-bottom'
+          className='CharInfo-scroll'
         >
-          <span className='scroll-to-bottom__inner'>
+          <span className='CharInfo-scroll__bottom'>
             <span className='mouse-wheel'></span>
           </span>
         </button>

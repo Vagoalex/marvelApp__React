@@ -1,69 +1,25 @@
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
-import RandomChar from '../RandomChar/RandomChar';
-import CharList from '../CharList/CharList';
-import CharInfo from '../CharInfo/CharInfo';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-
-import decorationVision from '../../assets/images/decorations/decorationVision.png';
-import decorationFalcon from '../../assets/images/decorations/decorationFalcon.png';
-import decorationIronMan from '../../assets/images/decorations/ironMan.png';
-import decorationSpiderMan from '../../assets/images/decorations/decorationSpiderMan.png';
+import Characters from '../Characters/Characters';
+import Comics from '../Comics/Comics';
 
 import './App.scss';
 
 const App = () => {
-  const [selectedChar, setSelectedChar] = useState(null);
+  const [route, setRoute] = useState('Characters');
 
-  const onScrollToTop = () => {
-    window.scrollTo({ top: 150 });
-  };
-
-  const onCharSelected = (id) => {
-    setSelectedChar(id);
-    onScrollToTop();
+  const onSelectPage = (e) => {
+    setRoute(e.target.textContent);
   };
 
   return (
     <Fragment>
       <header className='header'>
-        <Header />
-        <ErrorBoundary>
-          <RandomChar />
-        </ErrorBoundary>
+        <Header page={route} onSelectPage={onSelectPage} />
       </header>
       <main className='main'>
-        <div className='container wrapper'>
-          <div className='main__content char-content'>
-            <ErrorBoundary>
-              <CharList onCharSelected={onCharSelected} />
-            </ErrorBoundary>
-            <ErrorBoundary>
-              <CharInfo charID={selectedChar} />
-            </ErrorBoundary>
-            <img
-              className='decoration-vision'
-              src={decorationVision}
-              alt='decoration-vision'
-            />
-            <img
-              className='decoration-falcon'
-              src={decorationFalcon}
-              alt='decorationFalcon'
-            />
-            <img
-              className='decoration-iron-Man'
-              src={decorationIronMan}
-              alt='decorationIronMan'
-            />
-            <img
-              className='decoration-spider-man'
-              src={decorationSpiderMan}
-              alt='decorationSpiderMan'
-            />
-          </div>
-        </div>
+        {route === 'Characters' ? <Characters /> : <Comics />}
       </main>
     </Fragment>
   );

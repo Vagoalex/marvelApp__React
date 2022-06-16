@@ -7,15 +7,50 @@
   background-repeat: no-repeat;
   background-position: bottom center;
   border-bottom: 7px solid rgb(0, 0, 0);
+  height: 425px;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: -200px;
+
+  @media screen and (max-width: $mediaBig) {
+    top: -180px;
+  }
+  @media screen and (max-width: $mediaMediumWell) {
+    top: -150px;
+  }
+}
+
+.wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+
+  transition: all 0.5s ease;
+
+  @media screen and (max-width: $mediaLarge) {
+    max-width: 1050px;
+  }
+  @media screen and (max-width: $mediaBig) {
+    max-width: 990px;
+  }
+  @media screen and (max-width: $mediaMediumWell) {
+    max-width: 850px;
+  }
 }
 
 .main {
-  padding: 50px 0px 100px 0px;
+  padding: 0px 0px 50px 0px;
 
   background-color: #000000;
   background-image: url('https://www.transparenttextures.com/patterns/snow.png');
 
   &__content {
+    display: flex;
+    position: relative;
+    z-index: 10;
   }
 
   .decoration-vision {
@@ -114,34 +149,6 @@
       left: -162px;
     }
   }
-}
-
-.container {
-  height: 100%;
-  width: 100%;
-}
-
-.wrapper {
-  max-width: 1140px;
-  margin: 0 auto;
-
-  transition: all 0.5s ease;
-
-  @media screen and (max-width: $mediaLarge) {
-    max-width: 1050px;
-  }
-  @media screen and (max-width: $mediaBig) {
-    max-width: 990px;
-  }
-  @media screen and (max-width: $mediaMediumWell) {
-    max-width: 850px;
-  }
-}
-
-.char-content {
-  display: flex;
-  position: relative;
-  z-index: 10;
 }
 
 @keyframes move-wheel {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import useMarvelService from '../../services/useMarvelService';
 import CharListItem from '../CharListItem/CharListItem';
 
@@ -19,16 +19,10 @@ const CharList = (props) => {
   const [windowHeight, setWindowHeight] = useState(0);
 
   useEffect(() => {
-    onScrollToTop();
     onRequestChars();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    chars.length > 9 && chars.length !== 0 && onScrollToBottom();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chars]);
 
   const onRequestChars = (offset) => {
     clearError();
@@ -52,9 +46,14 @@ const CharList = (props) => {
   const onScrollToTop = () => {
     window.scrollTo({ top: 0 });
   };
-  const onScrollToBottom = () => {
+
+  const onScrollToBottom = useCallback(() => {
     window.scrollTo(0, windowHeight);
-  };
+  }, [windowHeight]);
+
+  useEffect(() => {
+    if (chars.length !== 0 && chars.length !== 9) onScrollToBottom();
+  }, [chars.length, onScrollToBottom]);
 
   const heroes = chars.map(({ id, ...data }) => (
     <CharListItem
@@ -97,9 +96,9 @@ const CharList = (props) => {
             }
           }}
           onClick={onScrollToTop}
-          className='scroll'
+          className='CharList-scroll'
         >
-          <span className='scroll-up'>
+          <span className='CharList-scroll__up'>
             <span className='mouse-wheel'></span>
           </span>
         </button>

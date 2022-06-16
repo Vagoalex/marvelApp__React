@@ -28,6 +28,9 @@
     margin-right: 50px;
     text-decoration: underline;
   }
+  &:hover {
+    filter: drop-shadow(10px 5px 20px #9f0013);
+  }
 }
 
 .nav {
@@ -47,9 +50,10 @@
   }
   &__item:hover {
     transform: scale(1.1);
+    filter: drop-shadow(10px 5px 20px #9f0013);
   }
   .nav__slash {
-    margin: 0px 8px;
+    margin: 0px 12px;
   }
 }
 
