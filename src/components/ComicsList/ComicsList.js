@@ -70,6 +70,22 @@ const ComicsList = (props) => {
 
   return (
     <section className='ComicsList'>
+      <button
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            onScrollToBottom();
+          }
+        }}
+        onClick={onScrollToBottom}
+        className='
+ComicsList-scroll-to-bottom'
+      >
+        <span className='ComicsList-scroll-to-bottom__inner'>
+          <span className='mouse-wheel'></span>
+        </span>
+      </button>
+
       <ul className='ComicsList-cards'>
         {status}
         {content}
