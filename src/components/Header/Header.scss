@@ -25,7 +25,6 @@
   &:focus {
     outline: 1px solid transparent;
     text-transform: uppercase;
-    margin-right: 50px;
     text-decoration: underline;
   }
   &:hover {
@@ -55,16 +54,23 @@
   .nav__slash {
     margin: 0px 12px;
   }
+  &__link {
+    color: #fff;
+    text-decoration: none;
+  }
+  &__link--active {
+    color: #d8021b;
+  }
 }
 
-.nav__item:hover.nav__item--active {
+.nav__item:hover .nav__link--active {
   transform: scale(1);
 }
-.nav__item:focus {
+.nav__link:focus {
   outline: 1px solid transparent;
-  transform: scale(1.15);
+  filter: drop-shadow(10px 5px 20px #9f0013);
 }
-.nav__item--active {
+.nav__link--active {
   color: $main-color;
   text-decoration: underline;
   font-size: 26px;

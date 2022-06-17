@@ -1,8 +1,7 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 
 import ComicsBanner from '../ComicsBanner/ComicsBanner';
 import ComicsList from '../ComicsList/ComicsList';
-import CharInfo from '../CharInfo/CharInfo';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 import decorationVision from '../../assets/images/decorations/decorationVision.png';

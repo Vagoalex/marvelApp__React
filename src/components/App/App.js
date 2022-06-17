@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import Characters from '../Characters/Characters';
@@ -7,21 +7,22 @@ import Comics from '../Comics/Comics';
 import './App.scss';
 
 const App = () => {
-  const [route, setRoute] = useState('Characters');
-
-  const onSelectPage = (e) => {
-    setRoute(e.target.textContent);
-  };
-
   return (
-    <Fragment>
+    <Router>
       <header className='header'>
-        <Header page={route} onSelectPage={onSelectPage} />
+        <Header />
       </header>
       <main className='main'>
-        {route === 'Characters' ? <Characters /> : <Comics />}
+        <Switch>
+          <Route exact path='/'>
+            <Characters />
+          </Route>
+          <Route exact path='/comics'>
+            <Comics />
+          </Route>
+        </Switch>
       </main>
-    </Fragment>
+    </Router>
   );
 };
 

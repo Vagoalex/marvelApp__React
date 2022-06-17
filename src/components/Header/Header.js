@@ -1,39 +1,45 @@
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
-const Header = ({ onSelectPage, page }) => {
-  const navElements = ['Characters', '/', 'Comics'];
-
-  const links = navElements.map((item) => {
-    const activeClass = 'nav__item--active';
-
-    const defaultClass = 'nav__item';
-
-    return item === '/' ? (
-      <span key={item} className='nav__slash'>
-        /
-      </span>
-    ) : (
-      <li
-        onClick={onSelectPage}
-        tabIndex={0}
-        key={item}
-        className={`${defaultClass} ${item === page ? activeClass : ''}`}
-      >
-        {item}
-      </li>
-    );
-  });
-
+const Header = () => {
   return (
     <div className='Header wrapper'>
       <h1 className='Header__title'>
-        <a className='Header__title-link' href='https://developer.marvel.com/'>
+        <a
+          tabIndex={0}
+          className='Header__title-link'
+          href='https://developer.marvel.com/'
+          target='_blank'
+          rel='noreferrer'
+        >
           Marvel
         </a>{' '}
         information portal
       </h1>
       <nav className='Header__nav'>
-        <ul className='nav'>{links}</ul>
+        <ul className='nav'>
+          <li className='nav__item'>
+            <NavLink
+              exact
+              className='nav__link'
+              activeClassName=' nav__link--active'
+              to='/'
+            >
+              Characters
+            </NavLink>
+          </li>
+          <span className='nav__slash'>/</span>
+          <li className='nav__item'>
+            <NavLink
+              exact
+              className='nav__link'
+              activeClassName='nav__link--active'
+              to='/comics'
+            >
+              Comics
+            </NavLink>
+          </li>
+        </ul>
       </nav>
     </div>
   );
