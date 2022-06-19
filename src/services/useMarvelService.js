@@ -1,5 +1,6 @@
 import { useHttp } from '../hooks/http.hook';
 
+// TODO: refactor this methods, because it's have a copypaste
 const useMarvelService = () => {
   const { request, loading, error, clearError } = useHttp();
 
@@ -49,7 +50,6 @@ const useMarvelService = () => {
 
     const res = await request(`${url}${comics}/${id}?apikey=${apiKeyGmail}`);
 
-    console.log(res);
     return _transformComics(res.data.results[0]);
   };
 
@@ -68,7 +68,7 @@ const useMarvelService = () => {
     const filteredDesc =
       description === '' || description === null
         ? `This Marvel comic doesn't have description.`
-        : `${description.slice(0, 150)}...`;
+        : `${description.slice(0, 250)}...`;
 
     return {
       id,

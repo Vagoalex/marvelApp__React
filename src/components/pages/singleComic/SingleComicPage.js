@@ -18,6 +18,7 @@ const SingleComicPage = () => {
 
   useEffect(() => {
     updateComic();
+    scrollToTop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [comicId]);
 
@@ -28,6 +29,10 @@ const SingleComicPage = () => {
 
   const onComicLoaded = (comic) => {
     setComic(comic);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0 });
   };
 
   const loadingContent = loading ? <LoadingSinglePage /> : null;

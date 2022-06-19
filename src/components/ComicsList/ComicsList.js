@@ -49,15 +49,14 @@ const ComicsList = (props) => {
 
   const onScrollToBottom = useCallback(() => {
     window.scrollTo(0, windowHeight);
-    console.log('scrolltobottom');
   }, [windowHeight]);
 
   useEffect(() => {
     if (comics.length !== 0 && comics.length !== 8) onScrollToBottom();
   }, [comics.length, onScrollToBottom]);
 
-  const comicsContent = comics.map(({ id, ...data }) => (
-    <ComicsListItem key={id} data={data} id={id} />
+  const comicsContent = comics.map(({ id, ...data }, i) => (
+    <ComicsListItem key={i} data={data} id={id} />
   ));
 
   const statusArray = [...Array(comics.length === 0 ? 8 : comics.length)].map(
