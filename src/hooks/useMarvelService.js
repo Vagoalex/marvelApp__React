@@ -1,4 +1,4 @@
-import { useHttp } from '../hooks/http.hook';
+import { useHttp } from './http.hook';
 
 // TODO: refactor this methods, because it's have a copypaste
 const useMarvelService = () => {
@@ -35,23 +35,35 @@ const useMarvelService = () => {
     return res.data.results.map(_transformComics);
   };
 
-  const getCharacterById = async (id) => {
-    const { url, characters, apiKeyGmail } = _server;
+  const getElementById = async (id, selector) => {
+    const { url, apiKeyGmail } = _server;
 
-    const res = await request(
-      `${url}${characters}/${id}?apikey=${apiKeyGmail}`
-    );
+    const res = await request(`${url}${selector}/${id}?apikey=${apiKeyGmail}`);
 
-    return _transformCharacter(res.data.results[0]);
+    if (selector === 'characters') {
+      return _transformCharacter(res.data.results[0]);
+    } else if (selector === 'comics') {
+      return _transformComics(res.data.results[0]);
+    }
   };
 
-  const getComicById = async (id) => {
-    const { url, comics, apiKeyGmail } = _server;
+  // const getCharacterById = async (id) => {
+  //   const { url, characters, apiKeyGmail } = _server;
 
-    const res = await request(`${url}${comics}/${id}?apikey=${apiKeyGmail}`);
+  //   const res = await request(
+  //     `${url}${characters}/${id}?apikey=${apiKeyGmail}`
+  //   );
 
-    return _transformComics(res.data.results[0]);
-  };
+  //   return _transformCharacter(res.data.results[0]);
+  // };
+
+  // const getComicById = async (id) => {
+  //   const { url, comics, apiKeyGmail } = _server;
+
+  //   const res = await request(`${url}${comics}/${id}?apikey=${apiKeyGmail}`);
+
+  //   return _transformComics(res.data.results[0]);
+  // };
 
   const _transformComics = (comics) => {
     const {
@@ -105,8 +117,7 @@ const useMarvelService = () => {
   return {
     getAllComics,
     getAllCharacters,
-    getCharacterById,
-    getComicById,
+    getElementById,
     loading,
     error,
     clearError,

@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ComicsBanner from '../../ComicsBanner/ComicsBanner';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 import Page404 from '../page404/Page404';
-import useMarvelService from '../../../services/useMarvelService';
+import useMarvelService from '../../../hooks/useMarvelService';
 import LoadingSinglePage from './loadingSinglePage/LoadingSinglePage';
 
 import './SingleComicPage.scss';
@@ -14,7 +14,7 @@ import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
 const SingleComicPage = () => {
   const { comicId } = useParams();
   const [comic, setComic] = useState(null);
-  const { getComicById, loading, error, clearError } = useMarvelService();
+  const { getElementById, loading, error, clearError } = useMarvelService();
 
   useEffect(() => {
     updateComic();
@@ -24,7 +24,7 @@ const SingleComicPage = () => {
 
   const updateComic = () => {
     clearError();
-    getComicById(comicId).then(onComicLoaded);
+    getElementById(comicId, 'comics').then(onComicLoaded);
   };
 
   const onComicLoaded = (comic) => {

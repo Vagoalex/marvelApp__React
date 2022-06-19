@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useMarvelService from '../../services/useMarvelService';
+import useMarvelService from '../../hooks/useMarvelService';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
 import Skeleton from '../Skeleton/Skeleton';
@@ -9,7 +9,7 @@ import './CharInfo.scss';
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
 const CharInfo = (props) => {
-  const { getCharacterById, loading, error, clearError } = useMarvelService();
+  const { getElementById, loading, error, clearError } = useMarvelService();
 
   const [char, setChar] = useState(null);
 
@@ -25,7 +25,7 @@ const CharInfo = (props) => {
     }
 
     clearError();
-    getCharacterById(charID).then(onCharLoaded);
+    getElementById(charID, 'characters').then(onCharLoaded);
   };
 
   const onCharLoaded = (char) => {

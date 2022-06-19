@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import useMarvelService from '../../services/useMarvelService';
+import useMarvelService from '../../hooks/useMarvelService';
 
 import './RandomChar.scss';
 
@@ -13,7 +13,7 @@ import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 const RandomChar = (props) => {
   const [char, setChar] = useState(null);
 
-  const { getCharacterById, loading, error, clearError } = useMarvelService();
+  const { getElementById, loading, error, clearError } = useMarvelService();
 
   useEffect(() => {
     updateChar();
@@ -32,7 +32,7 @@ const RandomChar = (props) => {
   const updateChar = () => {
     clearError();
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-    getCharacterById(id).then(onCharLoaded);
+    getElementById(id, 'characters').then(onCharLoaded);
   };
 
   const errorMessage = error ? <ErrorMessage /> : null;

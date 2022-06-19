@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import useMarvelService from '../../services/useMarvelService';
+import useMarvelService from '../../hooks/useMarvelService';
 import CharListItem from '../CharListItem/CharListItem';
 
 import './CharList.scss';
