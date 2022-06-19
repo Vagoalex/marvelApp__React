@@ -1,14 +1,14 @@
 import { Fragment, useState } from 'react';
 
-import RandomChar from '../RandomChar/RandomChar';
-import CharList from '../CharList/CharList';
-import CharInfo from '../CharInfo/CharInfo';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import RandomChar from '../../RandomChar/RandomChar';
+import CharList from '../../CharList/CharList';
+import CharInfo from '../../CharInfo/CharInfo';
+import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 
-import decorationVision from '../../assets/images/decorations/decorationVision.png';
-import decorationFalcon from '../../assets/images/decorations/decorationFalcon.png';
-import decorationIronMan from '../../assets/images/decorations/ironMan.png';
-import decorationSpiderMan from '../../assets/images/decorations/decorationSpiderMan.png';
+import decorationVision from '../../../assets/images/decorations/decorationVision.png';
+import decorationFalcon from '../../../assets/images/decorations/decorationFalcon.png';
+import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
+import decorationSpiderMan from '../../../assets/images/decorations/decorationSpiderMan.png';
 
 const Characters = () => {
   const [selectedChar, setSelectedChar] = useState(null);

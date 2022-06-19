@@ -1,10 +1,11 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
-import Characters from '../Characters/Characters';
-import Comics from '../Comics/Comics';
+import { Characters, Comics, Page404, SingleComicPage } from '../pages';
 
 import './App.scss';
+
+const path = '/marvelApp__React';
 
 const App = () => {
   return (
@@ -13,14 +14,15 @@ const App = () => {
         <Header />
       </header>
       <main className='main'>
-        <Switch>
-          <Route exact path='/'>
-            <Characters />
-          </Route>
-          <Route exact path='/comics'>
-            <Comics />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path={`${path}/`} element={<Characters />} />
+          <Route path={`${path}/comics`} element={<Comics />} />
+          <Route
+            path={`${path}/comics/:comicId`}
+            element={<SingleComicPage />}
+          />
+          <Route path='*' element={<Page404 />} />
+        </Routes>
       </main>
     </Router>
   );

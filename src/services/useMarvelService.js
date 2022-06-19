@@ -31,7 +31,6 @@ const useMarvelService = () => {
     const res = await request(
       `${url}${comics}?limit=${comicsLimit}&offset=${offset}&apikey=${apiKeyGmail}`
     );
-    console.log(res.data.results);
     return res.data.results.map(_transformComics);
   };
 
@@ -45,12 +44,38 @@ const useMarvelService = () => {
     return _transformCharacter(res.data.results[0]);
   };
 
+  const getComicById = async (id) => {
+    const { url, comics, apiKeyGmail } = _server;
+
+    const res = await request(`${url}${comics}/${id}?apikey=${apiKeyGmail}`);
+
+    console.log(res);
+    return _transformComics(res.data.results[0]);
+  };
+
   const _transformComics = (comics) => {
-    const { id, title, thumbnail, urls, prices } = comics;
+    const {
+      id,
+      title,
+      thumbnail,
+      urls,
+      prices,
+      description,
+      pageCount,
+      language = 'EN-RU',
+    } = comics;
+
+    const filteredDesc =
+      description === '' || description === null
+        ? `This Marvel comic doesn't have description.`
+        : `${description.slice(0, 150)}...`;
 
     return {
       id,
       title,
+      language,
+      pages: pageCount,
+      description: filteredDesc,
       thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
       homepage: urls[0].url,
       comics: comics.items,
@@ -81,6 +106,7 @@ const useMarvelService = () => {
     getAllComics,
     getAllCharacters,
     getCharacterById,
+    getComicById,
     loading,
     error,
     clearError,

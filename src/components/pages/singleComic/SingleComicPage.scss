@@ -1,0 +1,97 @@
+@import '../../../style/variables.scss';
+
+.SingleComicPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+
+  border: 3px solid #000;
+  box-shadow: 25px 25px 35px rgba(0, 0, 0, 0.8);
+  border-radius: 30px;
+  padding: 20px 30px;
+  margin-bottom: 800px;
+
+  background: url('https://kartinkin.net/uploads/posts/2021-04/1617290064_54-p-fon-komiks-59.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.SingleComicPage-link {
+  cursor: pointer;
+  &__img {
+    width: 220px;
+    height: 335px;
+    border: 3px solid #000;
+    border-radius: 30px;
+    transition: all 0.5s ease;
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.8);
+
+    &:hover {
+      transform: scale(1.04);
+      border: 3px solid #9f0013;
+      filter: drop-shadow(0px 5px 20px #9f0013);
+    }
+
+    // @media screen and (max-width: $mediaLarge) {
+    //   width: 165px;
+    //   height: 255px;
+    // }
+
+    @media screen and (max-width: $mediaLarge) {
+      width: 195px;
+      height: 295px;
+    }
+  }
+}
+
+.SingleComicPage-info {
+  width: 550px;
+  background-color: #4b4747;
+  padding: 20px 15px;
+  border: 1px solid #000;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+
+  transition: all 0.5s ease;
+  font-size: 15px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 16px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.4);
+  }
+  &__desk {
+    margin-top: 27px;
+  }
+  &__comic-length {
+    margin-top: 22px;
+  }
+  &__comic-lang {
+    margin-top: 22px;
+    &--inner {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.4);
+    }
+  }
+
+  &__price {
+    margin-top: 22px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #000000;
+    text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.4);
+    transition: all 0.5s ease;
+  }
+}
+
+.SingleComicPage-btn-back {
+}

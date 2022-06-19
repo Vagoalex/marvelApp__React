@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
 import useMarvelService from '../../services/useMarvelService';
-import CharListItem from '../CharListItem/CharListItem';
 
 import charItemLoadingGif from '../../assets/gifs/CharListItemLoading.gif';
 import ironMan404 from '../../assets/gifs/ironMan404.gif';
@@ -78,8 +77,7 @@ const ComicsList = (props) => {
           }
         }}
         onClick={onScrollToBottom}
-        className='
-ComicsList-scroll-to-bottom'
+        className='ComicsList-scroll-to-bottom'
       >
         <span className='ComicsList-scroll-to-bottom__inner'>
           <span className='mouse-wheel'></span>

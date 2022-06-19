@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
 
-import ComicsBanner from '../ComicsBanner/ComicsBanner';
-import ComicsList from '../ComicsList/ComicsList';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import ComicsBanner from '../../ComicsBanner/ComicsBanner';
+import ComicsList from '../../ComicsList/ComicsList';
+import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 
-import decorationVision from '../../assets/images/decorations/decorationVision.png';
-import decorationFalcon from '../../assets/images/decorations/decorationFalcon.png';
-import decorationIronMan from '../../assets/images/decorations/ironMan.png';
-import decorationSpiderMan from '../../assets/images/decorations/decorationSpiderMan.png';
+import decorationVision from '../../../assets/images/decorations/decorationVision.png';
+import decorationFalcon from '../../../assets/images/decorations/decorationFalcon.png';
+import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
+import decorationSpiderMan from '../../../assets/images/decorations/decorationSpiderMan.png';
 
 import './Comics.scss';
 

@@ -9,6 +9,10 @@
 
   grid-column-gap: 2em;
   grid-row-gap: 2em;
+
+  // @media screen and (max-width: $mediaLarge) {
+  //   grid-column-gap: 1em;
+  // }
 }
 
 .ComicsList-assets {
