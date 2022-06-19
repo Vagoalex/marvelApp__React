@@ -1,6 +1,6 @@
 @import '../../style/variables.scss';
 
-.Comics {
+.ComicsBanner {
   display: flex;
   position: relative;
   top: -245px;
@@ -8,14 +8,11 @@
   @media screen and (max-width: $mediaLarge) {
     top: -245px;
   }
-  @media screen and (max-width: $mediaBig) {
-    top: -225px;
-  }
   @media screen and (max-width: $mediaMediumWell) {
     top: -195px;
   }
 }
-.Comics-box {
+.ComicsBanner-box {
   display: flex;
   align-items: center;
   width: 100%;
@@ -34,7 +31,7 @@
   padding: 30px 40px;
   transition: all 0.5s ease;
 
-  .Comics-box-logo {
+  .ComicsBanner-box-logo {
     position: relative;
     transition: all 0.5s ease;
     &__img {
@@ -84,7 +81,7 @@
     cursor: pointer;
   }
 
-  .Comics-box-titles {
+  .ComicsBanner-box-titles {
     margin-left: 50px;
     width: 100%;
     position: relative;

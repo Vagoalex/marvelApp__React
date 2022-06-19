@@ -63,6 +63,10 @@
     line-height: 16px;
     text-transform: uppercase;
     text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.4);
+
+    @media screen and (max-width: $mediaBig) {
+      font-size: 16px;
+    }
   }
   &__desk {
     margin-top: 27px;
@@ -78,6 +82,10 @@
       line-height: 16px;
       text-transform: uppercase;
       text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.4);
+
+      @media screen and (max-width: $mediaBig) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -90,6 +98,15 @@
     color: #000000;
     text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.4);
     transition: all 0.5s ease;
+
+    @media screen and (max-width: $mediaBig) {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: $mediaBig) {
+    margin: 0px 35px;
+    font-size: 13px;
   }
 }
 
