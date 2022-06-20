@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
-const path = '/marvelApp__React';
-
 const Header = () => {
   return (
     <div className='Header wrapper'>
@@ -26,7 +24,7 @@ const Header = () => {
               className={({ isActive }) =>
                 'nav__link' + (isActive ? ' nav__link--active' : '')
               }
-              to={`${path}/`}
+              to='/'
             >
               Characters
             </NavLink>
@@ -37,7 +35,7 @@ const Header = () => {
               className={({ isActive }) =>
                 'nav__link' + (isActive ? ' nav__link--active' : '')
               }
-              to={`${path}/comics`}
+              to='/comics'
             >
               Comics
             </NavLink>

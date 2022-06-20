@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import LoadingSinglePage from '../pages/singleComic/loadingSinglePage/LoadingSinglePage';
@@ -13,8 +13,6 @@ const SingleComicPage = lazy(() =>
   import('../pages/singleComic/SingleComicPage')
 );
 
-const path = '/marvelApp__React';
-
 const App = () => {
   return (
     <Router>
@@ -24,12 +22,9 @@ const App = () => {
       <main className='main'>
         <Suspense fullback={<LoadingSinglePage />}>
           <Routes>
-            <Route path={`${path}/`} element={<Characters />} />
-            <Route path={`${path}/comics`} element={<Comics />} />
-            <Route
-              path={`${path}/comics/:comicId`}
-              element={<SingleComicPage />}
-            />
+            <Route path='/' element={<Characters />} />
+            <Route path='/comics' element={<Comics />} />
+            <Route path={`/comics/:comicId`} element={<SingleComicPage />} />
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>

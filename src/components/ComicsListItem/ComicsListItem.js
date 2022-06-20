@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom';
 
 import './ComicsListItem.scss';
-const path = '/marvelApp__React';
 
 const ComicsListItem = (props) => {
   const { data, id, onComicSelected } = props;
@@ -19,7 +18,7 @@ const ComicsListItem = (props) => {
       //     }
       //   }}
     >
-      <Link to={`${path}/comics/${id}`} className='ComicsList-cards-item__link'>
+      <Link to={`/comics/${id}`} className='ComicsList-cards-item__link'>
         <img
           className='ComicsList-cards-item__img'
           src={thumbnail}

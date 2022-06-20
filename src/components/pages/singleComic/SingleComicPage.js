@@ -72,7 +72,6 @@ const SingleComicPage = () => {
 const SingleComicPageContent = ({ comic }) => {
   const { title, description, thumbnail, price, language, pages, homepage } =
     comic;
-  const path = '/marvelApp__React';
 
   return (
     <section className='SingleComicPage'>
@@ -106,7 +105,7 @@ const SingleComicPageContent = ({ comic }) => {
       </div>
       <div className='SingleComicPage-btn-back'>
         <Link
-          to={`${path}/comics`}
+          to='/comics'
           className='SingleComicPage-btn-back button button__long'
         >
           <div className='inner'>Back to all</div>
