@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/marvelApp__React/static/css/main.eb020ffa.css",
-    "main.js": "/marvelApp__React/static/js/main.d13b01db.js",
-    "static/css/145.77b48093.chunk.css": "/marvelApp__React/static/css/145.77b48093.chunk.css",
+    "main.css": "/marvelApp__React/static/css/main.17ae8a40.css",
+    "main.js": "/marvelApp__React/static/js/main.25c84e92.js",
+    "static/css/145.b30fb953.chunk.css": "/marvelApp__React/static/css/145.b30fb953.chunk.css",
     "static/js/145.e1d7197f.chunk.js": "/marvelApp__React/static/js/145.e1d7197f.chunk.js",
     "static/css/395.b81267fa.chunk.css": "/marvelApp__React/static/css/395.b81267fa.chunk.css",
-    "static/js/395.1d46e32a.chunk.js": "/marvelApp__React/static/js/395.1d46e32a.chunk.js",
+    "static/js/395.42812d56.chunk.js": "/marvelApp__React/static/js/395.42812d56.chunk.js",
     "static/css/657.bb1e523d.chunk.css": "/marvelApp__React/static/css/657.bb1e523d.chunk.css",
     "static/js/657.ab78e11b.chunk.js": "/marvelApp__React/static/js/657.ab78e11b.chunk.js",
     "static/css/640.778fd801.chunk.css": "/marvelApp__React/static/css/640.778fd801.chunk.css",
-    "static/js/640.bfb80be2.chunk.js": "/marvelApp__React/static/js/640.bfb80be2.chunk.js",
+    "static/js/640.d9053a41.chunk.js": "/marvelApp__React/static/js/640.d9053a41.chunk.js",
     "static/js/672.ff3f9dd3.chunk.js": "/marvelApp__React/static/js/672.ff3f9dd3.chunk.js",
     "static/media/CharListItemLoading.gif": "/marvelApp__React/static/media/CharListItemLoading.6cefb0de3a5c513193d1.gif",
     "static/media/ironMan404.gif": "/marvelApp__React/static/media/ironMan404.a42bbd2087ae7da19980.gif",
@@ -21,20 +21,20 @@
     "static/media/RandomChar-mjolnerShild.png": "/marvelApp__React/static/media/RandomChar-mjolnerShild.439ab19cfabed7d9d9b8.png",
     "static/media/marvelIcon.jpg": "/marvelApp__React/static/media/marvelIcon.dd9b81e060c773c65315.jpg",
     "index.html": "/marvelApp__React/index.html",
-    "main.eb020ffa.css.map": "/marvelApp__React/static/css/main.eb020ffa.css.map",
-    "main.d13b01db.js.map": "/marvelApp__React/static/js/main.d13b01db.js.map",
-    "145.77b48093.chunk.css.map": "/marvelApp__React/static/css/145.77b48093.chunk.css.map",
+    "main.17ae8a40.css.map": "/marvelApp__React/static/css/main.17ae8a40.css.map",
+    "main.25c84e92.js.map": "/marvelApp__React/static/js/main.25c84e92.js.map",
+    "145.b30fb953.chunk.css.map": "/marvelApp__React/static/css/145.b30fb953.chunk.css.map",
     "145.e1d7197f.chunk.js.map": "/marvelApp__React/static/js/145.e1d7197f.chunk.js.map",
     "395.b81267fa.chunk.css.map": "/marvelApp__React/static/css/395.b81267fa.chunk.css.map",
-    "395.1d46e32a.chunk.js.map": "/marvelApp__React/static/js/395.1d46e32a.chunk.js.map",
+    "395.42812d56.chunk.js.map": "/marvelApp__React/static/js/395.42812d56.chunk.js.map",
     "657.bb1e523d.chunk.css.map": "/marvelApp__React/static/css/657.bb1e523d.chunk.css.map",
     "657.ab78e11b.chunk.js.map": "/marvelApp__React/static/js/657.ab78e11b.chunk.js.map",
     "640.778fd801.chunk.css.map": "/marvelApp__React/static/css/640.778fd801.chunk.css.map",
-    "640.bfb80be2.chunk.js.map": "/marvelApp__React/static/js/640.bfb80be2.chunk.js.map",
+    "640.d9053a41.chunk.js.map": "/marvelApp__React/static/js/640.d9053a41.chunk.js.map",
     "672.ff3f9dd3.chunk.js.map": "/marvelApp__React/static/js/672.ff3f9dd3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb020ffa.css",
-    "static/js/main.d13b01db.js"
+    "static/css/main.17ae8a40.css",
+    "static/js/main.25c84e92.js"
   ]
 }
