@@ -1,8 +1,8 @@
 .Skeleton {
-  background: url('https://i1.wallbox.ru/wallpapers/small/201727/1499330903595df957de22e3.79057767.jpg');
+  background: url('./iron-man-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom center;
+  background-position: right;
 
   position: absolute;
   left: 0;
@@ -10,7 +10,6 @@
 
   border-radius: 10px;
   flex: 40%;
-  // max-width: 425px;
   width: 100%;
   padding: 25px;
   border: 2px solid #000;
@@ -18,7 +17,9 @@
 }
 
 .skeleton-select {
-  color: #c6c6c6;
+  background-color: rgb(60, 59, 59, 0.85);
+  border-radius: 15px;
+  color: #fe3c3c;
   font-weight: bold;
   font-size: 18px;
   line-height: 24px;

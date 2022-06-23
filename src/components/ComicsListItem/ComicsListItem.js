@@ -11,7 +11,7 @@ const ComicsListItem = (props) => {
     <li
       //   onClick={() => onComicSelected(id)}
       className='ComicsList-cards-item'
-      tabIndex={0}
+
       //   onKeyDown={(e) => {
       //     if (e.key === 'Enter') {
       //       onComicSelected(id);

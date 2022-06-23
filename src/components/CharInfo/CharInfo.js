@@ -55,9 +55,6 @@ const View = ({ char }) => {
   };
 
   const comicsContent = comics.map(({ name }, i) => {
-    if (i > 10) {
-      return null;
-    }
     return <ComicsItem key={i} name={name} />;
   });
 

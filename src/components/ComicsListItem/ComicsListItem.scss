@@ -14,17 +14,23 @@
 
   //   background: url('https://ak.picdn.net/shutterstock/videos/15781780/thumb/9.jpg');
   //   background: url('https://kartinkin.net/uploads/posts/2021-04/1617290064_54-p-fon-komiks-59.jpg');
-  background: url('https://kartinkin.net/uploads/posts/2021-04/1617290060_22-p-fon-komiks-25.jpg');
+  background: url('./comic-item-bg.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 
   &__link {
+    outline: 1px solid transparent;
     text-decoration: none;
     color: rgba(0, 0, 0, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    &:focus {
+      outline: 2px solid rgb(148, 0, 0);
+      border-radius: 30px;
+      box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.8);
+    }
   }
 
   &__img {

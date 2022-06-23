@@ -47,24 +47,6 @@ const useMarvelService = () => {
     }
   };
 
-  // const getCharacterById = async (id) => {
-  //   const { url, characters, apiKeyGmail } = _server;
-
-  //   const res = await request(
-  //     `${url}${characters}/${id}?apikey=${apiKeyGmail}`
-  //   );
-
-  //   return _transformCharacter(res.data.results[0]);
-  // };
-
-  // const getComicById = async (id) => {
-  //   const { url, comics, apiKeyGmail } = _server;
-
-  //   const res = await request(`${url}${comics}/${id}?apikey=${apiKeyGmail}`);
-
-  //   return _transformComics(res.data.results[0]);
-  // };
-
   const _transformComics = (comics) => {
     const {
       id,

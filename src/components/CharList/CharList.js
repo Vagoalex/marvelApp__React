@@ -52,7 +52,8 @@ const CharList = (props) => {
   }, [windowHeight]);
 
   useEffect(() => {
-    if (chars.length !== 0 && chars.length !== 9) onScrollToBottom();
+    if (chars.length !== 0 && chars.length !== 9)
+      setTimeout(onScrollToBottom, 2000);
   }, [chars.length, onScrollToBottom]);
 
   const heroes = chars.map(({ id, ...data }) => (
