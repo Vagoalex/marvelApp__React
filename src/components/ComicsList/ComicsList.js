@@ -53,7 +53,7 @@ const ComicsList = (props) => {
 
   useEffect(() => {
     if (comics.length !== 0 && comics.length !== 8)
-      setTimeout(onScrollToBottom, 2000);
+      setTimeout(onScrollToBottom, 1500);
   }, [comics.length, onScrollToBottom]);
 
   const comicsContent = comics.map(({ id, ...data }, i) => (

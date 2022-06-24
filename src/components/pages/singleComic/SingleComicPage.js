@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ComicsBanner from '../../ComicsBanner/ComicsBanner';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
@@ -42,7 +42,7 @@ const SingleComicPage = () => {
   ) : null;
 
   return (
-    <Fragment>
+    <>
       <ComicsBanner />
 
       <section className='container wrapper'>
@@ -65,7 +65,7 @@ const SingleComicPage = () => {
           />
         </div>
       </section>
-    </Fragment>
+    </>
   );
 };
 

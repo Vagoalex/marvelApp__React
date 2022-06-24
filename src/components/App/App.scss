@@ -42,10 +42,11 @@
 }
 
 .main {
+  min-height: 100vh;
   padding: 0px 0px 50px 0px;
-
   background-color: #000000;
   background-image: url('https://www.transparenttextures.com/patterns/snow.png');
+  position: relative;
 
   &__content {
     display: flex;
@@ -77,76 +78,50 @@
     }
   }
   .decoration-falcon {
-    width: 40%;
+    width: 25%;
     position: absolute;
-    top: 10px;
-    left: -365px;
-    z-index: -1;
+    top: 10%;
+    left: 0;
 
     animation-duration: 3s;
     animation-name: slide-top;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 
-    @media screen and (max-width: $mediaExtraLarge) {
-      width: 35%;
-      left: -285px;
-    }
-    @media screen and (max-width: $mediaBig) {
-      width: 30%;
-      left: -208px;
-    }
-    @media screen and (max-width: $mediaMediumWell) {
-      top: -10%;
-      left: -161px;
-    }
+    // @media screen and (max-width: $mediaExtraLarge) {
+    //   width: 35%;
+    //   left: -285px;
+    // }
+    // @media screen and (max-width: $mediaBig) {
+    //   width: 30%;
+    //   left: -208px;
+    // }
+    // @media screen and (max-width: $mediaMediumWell) {
+    //   top: -10%;
+    //   left: -161px;
+    // }
   }
   .decoration-iron-Man {
-    width: 31%;
+    width: 20%;
     position: absolute;
-    top: -210px;
-    right: -253px;
-    z-index: -1;
+    top: 0;
+    right: 0;
 
-    animation-duration: 4s;
+    animation-duration: 6s;
     animation-name: slide-bottom;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 
     @media screen and (max-width: $mediaExtraLarge) {
-      width: 26%;
-      right: -190px;
+      // width: 16%;
+      // right: -190px;
     }
     @media screen and (max-width: $mediaBig) {
-      width: 24%;
+      width: 14%;
       right: -150px;
     }
     @media screen and (max-width: $mediaMediumWell) {
       right: -90px;
-    }
-  }
-  .decoration-spider-man {
-    width: 35%;
-    position: absolute;
-    bottom: 73px;
-    left: -386px;
-    z-index: -1;
-
-    @media screen and (max-width: $mediaExtraLarge) {
-      width: 30%;
-      left: -330px;
-    }
-    @media screen and (max-width: $mediaLarge) {
-      width: 30%;
-      left: -301px;
-    }
-    @media screen and (max-width: $mediaBig) {
-      width: 24%;
-      left: -229px;
-    }
-    @media screen and (max-width: $mediaMediumWell) {
-      width: 20%;
-      left: -162px;
     }
   }
 }
@@ -185,14 +160,112 @@
 
 @keyframes slide-bottom {
   from {
-    // top: -210px;
-    // right: -365px;
-    transform: translateY(-2rem) translateX(3rem);
+    transform: translateY(-25rem) translateX(1rem);
   }
 
   to {
-    // top: -160px;
-    // right: -195px;
-    transform: translateY(5rem) translateX(-2rem);
+    transform: translateY(-6rem) translateX(-15rem);
   }
+}
+
+// fade-appear, fade-appear-active, fade-appear-done
+// fade-enter, fade-enter-active, fade-enter-done
+// fade-exit, fade-exit-active, fade-exit-done
+
+// .fade-enter-active {
+//   animation: fade-in 10000ms forwards;
+// }
+// .fade-exit-active {
+//   animation: fade-out 10000ms forwards;
+// }
+
+.fade {
+  position: absolute;
+}
+
+.fade-enter-active {
+  animation: fade-in 1000ms forwards;
+}
+.fade-exit-active {
+  animation: fade-out 1000ms forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-1150px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(1150px);
+  }
+}
+
+// .slide-enter {
+//   transition: transform 1000ms ease-out;
+// }
+
+// .slide-enter {
+//   transform: translateX(100%);
+// }
+
+// .slide-enter.slide-enter-active {
+//   transform: translateX(0%);
+// }
+
+// .slide-exit {
+//   opacity: 0;
+//   display: none;
+// }
+
+// .slide-exit-active {
+//   opacity: 0;
+//   // transform: translateX(-100%);
+//   display: none;
+// }
+// .slide-exit-done {
+//   opacity: 0;
+//   // transform: translateX(-100%);
+//   display: none;
+// }
+
+// // fade-appear, fade-appear-active, fade-appear-done
+// // fade-enter, fade-enter-active, fade-enter-done
+// // fade-exit, fade-exit-active, fade-exit-done
+
+.page-enter {
+  transform: translateX(-110%);
+  transition: all 500ms;
+}
+.page-enter-active {
+  transform: translateX(-110%);
+  transition: all 500ms;
+}
+.page-enter-done {
+  transform: translateX(0%);
+  transition: all 500ms;
+}
+
+.page-exit {
+  transition: 500ms;
+  transform: scale(1);
+}
+.page-exit-active {
+  transition: 500ms;
+  transform: scale(0.1);
+}
+.page-exit-done {
+  transform: scale(0.1);
+  transform: translateX(-110%);
+  transition: all 500ms;
 }

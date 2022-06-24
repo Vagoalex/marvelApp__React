@@ -1,7 +1,19 @@
+import { useMemo } from 'react';
+
 import { NavLink } from 'react-router-dom';
+
 import './Header.scss';
 
-const Header = () => {
+const Header = ({ Characters, Comics }) => {
+  const routesForNav = useMemo(
+    () => [
+      { key: 11, path: '/', name: 'Characters', Component: Characters },
+      { key: 21, name: 'slash' },
+      { key: 31, path: '/comics', name: 'Comics', Component: Comics },
+    ],
+    [Characters, Comics]
+  );
+
   return (
     <div className='Header wrapper'>
       <h1 className='Header__title'>
@@ -18,28 +30,28 @@ const Header = () => {
       </h1>
       <nav className='Header__nav'>
         <ul className='nav'>
-          <li className='nav__item'>
-            <NavLink
-              end
-              className={({ isActive }) =>
-                'nav__link' + (isActive ? ' nav__link--active' : '')
-              }
-              to='/'
-            >
-              Characters
-            </NavLink>
-          </li>
-          <span className='nav__slash'>/</span>
-          <li className='nav__item'>
-            <NavLink
-              className={({ isActive }) =>
-                'nav__link' + (isActive ? ' nav__link--active' : '')
-              }
-              to='/comics'
-            >
-              Comics
-            </NavLink>
-          </li>
+          {routesForNav.map((route) => {
+            if (route.name === 'slash') {
+              return (
+                <span key={route.key} className='nav__slash'>
+                  /
+                </span>
+              );
+            }
+
+            return (
+              <li key={route.key} className='nav__item'>
+                <NavLink
+                  exact
+                  className='nav__link'
+                  activeClassName=' nav__link--active'
+                  to={route.path}
+                >
+                  {route.name}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>

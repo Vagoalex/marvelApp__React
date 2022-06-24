@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
@@ -12,6 +13,7 @@ import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 
 const RandomChar = (props) => {
   const [char, setChar] = useState(null);
+  const [loadChar, setLoadChar] = useState(false);
 
   const { getElementById, loading, error, clearError } = useMarvelService();
 
@@ -27,12 +29,14 @@ const RandomChar = (props) => {
 
   const onCharLoaded = (char) => {
     setChar(char);
+    setLoadChar(true);
   };
 
   const updateChar = () => {
     clearError();
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
     getElementById(id, 'characters').then(onCharLoaded);
+    setLoadChar(false);
   };
 
   const errorMessage = error ? <ErrorMessage /> : null;
@@ -40,40 +44,42 @@ const RandomChar = (props) => {
   const content = !(loading || error || !char) ? <View char={char} /> : null;
 
   return (
-    <section className='RandomChar wrapper'>
-      <div className='RandomChar__character-info'>
-        {errorMessage}
-        {spinner}
-        {content}
-      </div>
-      <div className='RandomChar__randomizer'>
-        <div className='randomizer-top'>
-          <h3 className='randomizer-top__title random-title'>
-            Random character for today!
-          </h3>
-          <h3 className='randomizer-top__title  random-title'>
-            Do you want to get to know him better?
-          </h3>
+    <CSSTransition in={loadChar} timeout={500} classNames='random-char-load'>
+      <section className='RandomChar wrapper'>
+        <div className='RandomChar__character-info'>
+          {errorMessage}
+          {spinner}
+          {content}
         </div>
-        <div className='randomizer-bottom'>
-          <h3 className='randomizer-bottom__title  random-title'>
-            Or choose another one
-          </h3>
-          <button
-            onClick={updateChar}
-            className='randomizer-bottom__button button'
-            type='button'
-          >
-            <div className='inner'>Try it</div>
-          </button>
+        <div className='RandomChar__randomizer'>
+          <div className='randomizer-top'>
+            <h3 className='randomizer-top__title random-title'>
+              Random character for today!
+            </h3>
+            <h3 className='randomizer-top__title  random-title'>
+              Do you want to get to know him better?
+            </h3>
+          </div>
+          <div className='randomizer-bottom'>
+            <h3 className='randomizer-bottom__title  random-title'>
+              Or choose another one
+            </h3>
+            <button
+              onClick={updateChar}
+              className='randomizer-bottom__button button'
+              type='button'
+            >
+              <div className='inner'>Try it</div>
+            </button>
+          </div>
+          <img
+            className='randomizer-img'
+            src={randomizerDecorate}
+            alt='mjolnir'
+          />
         </div>
-        <img
-          className='randomizer-img'
-          src={randomizerDecorate}
-          alt='mjolnir'
-        />
-      </div>
-    </section>
+      </section>
+    </CSSTransition>
   );
 };
 

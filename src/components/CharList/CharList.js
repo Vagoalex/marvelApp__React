@@ -49,11 +49,12 @@ const CharList = (props) => {
 
   const onScrollToBottom = useCallback(() => {
     window.scrollTo(0, windowHeight);
+    console.log(windowHeight);
   }, [windowHeight]);
 
   useEffect(() => {
     if (chars.length !== 0 && chars.length !== 9)
-      setTimeout(onScrollToBottom, 2000);
+      setTimeout(onScrollToBottom, 1500);
   }, [chars.length, onScrollToBottom]);
 
   const heroes = chars.map(({ id, ...data }) => (

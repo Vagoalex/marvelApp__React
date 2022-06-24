@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 
 import RandomChar from '../../RandomChar/RandomChar';
 import CharList from '../../CharList/CharList';
@@ -6,9 +6,8 @@ import CharInfo from '../../CharInfo/CharInfo';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 
 import decorationVision from '../../../assets/images/decorations/decorationVision.png';
-import decorationFalcon from '../../../assets/images/decorations/decorationFalcon.png';
-import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
-import decorationSpiderMan from '../../../assets/images/decorations/decorationSpiderMan.png';
+// import decorationFalcon from '../../../assets/images/decorations/decorationFalcon.png';
+// import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
 
 const Characters = () => {
   const [selectedChar, setSelectedChar] = useState(null);
@@ -23,7 +22,7 @@ const Characters = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <ErrorBoundary>
         <RandomChar />
       </ErrorBoundary>
@@ -40,7 +39,7 @@ const Characters = () => {
             src={decorationVision}
             alt='decoration-vision'
           />
-          <img
+          {/* <img
             className='decoration-falcon'
             src={decorationFalcon}
             alt='decorationFalcon'
@@ -49,15 +48,10 @@ const Characters = () => {
             className='decoration-iron-Man'
             src={decorationIronMan}
             alt='decorationIronMan'
-          />
-          <img
-            className='decoration-spider-man'
-            src={decorationSpiderMan}
-            alt='decorationSpiderMan'
-          />
+          /> */}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

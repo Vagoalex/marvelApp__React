@@ -88,3 +88,18 @@
   //   right: 7%;
   // }
 }
+
+.hero-transition-enter {
+  transform: translateX(-100%) scale(0.8);
+}
+.hero-transition-enter-active {
+  transition: all 300ms;
+  transform: translateX(0%) scale(1);
+}
+// .hero-transition-exit {
+//   transition: all 500ms;
+// }
+// .hero-transition-exit-active {
+//   transform: translateX(-100%) rotate(60deg);
+//   transition: all 500ms;
+// }
