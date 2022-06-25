@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import ComicsBanner from '../../ComicsBanner/ComicsBanner';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 import Page404 from '../page404/Page404';
 import useMarvelService from '../../../hooks/useMarvelService';
-import LoadingSinglePage from './loadingSinglePage/LoadingSinglePage';
+
+const LoadingPage = lazy(() => import('./loadingSinglePage/LoadingSinglePage'));
 
 const SinglePage = ({ Component, dataType }) => {
   const { id } = useParams();
@@ -39,7 +40,7 @@ const SinglePage = ({ Component, dataType }) => {
     window.scrollTo({ top: 0 });
   };
 
-  const loadingContent = loading ? <LoadingSinglePage /> : null;
+  const loadingContent = loading ? <LoadingPage /> : null;
   const errorContent = error ? <Page404 /> : null;
   const content = !(loading || error || !data) ? (
     <Component data={data} />
