@@ -3,8 +3,6 @@ import { lazy, Suspense } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 
-import LoadingSinglePage from '../pages/singleComic/loadingSinglePage/LoadingSinglePage';
-
 import decorationFalcon from '../../assets/images/decorations/decorationFalcon.png';
 import decorationIronMan from '../../assets/images/decorations/ironMan.png';
 import './App.scss';
@@ -18,6 +16,9 @@ const SingleComicPage = lazy(() =>
 );
 const SingleCharacterPage = lazy(() =>
   import('../pages/SinglePage/SingleCharacterLayout/SingleCharacterLayout')
+);
+const LoadingSinglePage = lazy(() =>
+  import('../pages/SinglePage/loadingSinglePage/LoadingSinglePage')
 );
 
 const App = () => {
