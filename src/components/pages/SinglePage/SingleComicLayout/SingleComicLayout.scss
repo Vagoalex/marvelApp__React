@@ -1,4 +1,4 @@
-@import '../../../style/variables.scss';
+@import '../../../../style/variables.scss';
 
 .SingleComicPage {
   display: flex;
@@ -12,7 +12,7 @@
   padding: 20px 30px;
   margin-bottom: 800px;
 
-  background: url('./comic-bg.jpg');
+  background: url('../comic-bg.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -69,6 +69,7 @@
   }
   &__desk {
     margin-top: 27px;
+    text-align: justify;
 
     @media screen and (max-width: $mediaMediumWell) {
       margin-top: 15px;

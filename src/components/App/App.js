@@ -8,13 +8,16 @@ import LoadingSinglePage from '../pages/singleComic/loadingSinglePage/LoadingSin
 import decorationFalcon from '../../assets/images/decorations/decorationFalcon.png';
 import decorationIronMan from '../../assets/images/decorations/ironMan.png';
 import './App.scss';
-import './Header.scss';
 
 const Characters = lazy(() => import('../pages/characters/Characters'));
 const Comics = lazy(() => import('../pages/comics/Comics'));
 const Page404 = lazy(() => import('../pages/page404/Page404'));
+const SinglePage = lazy(() => import('../pages/SinglePage/SinglePage'));
 const SingleComicPage = lazy(() =>
-  import('../pages/singleComic/SingleComicPage')
+  import('../pages/SinglePage/SingleComicLayout/SingleComicLayout')
+);
+const SingleCharacterPage = lazy(() =>
+  import('../pages/SinglePage/SingleCharacterLayout/SingleCharacterLayout')
 );
 
 const App = () => {
@@ -32,11 +35,14 @@ const App = () => {
             <Route exact path='/comics'>
               <Comics />
             </Route>
-            <Route exact path={`/comics/:comicId`}>
-              <SingleComicPage />
+            <Route exact path={'/comics/:id'}>
+              <SinglePage Component={SingleComicPage} dataType={'comics'} />
             </Route>
-            <Route exact path={`/characters/:characterId`}>
-              <SingleComicPage />
+            <Route exact path={'/characters/:id'}>
+              <SinglePage
+                Component={SingleCharacterPage}
+                dataType={'characters'}
+              />
             </Route>
             <Route exact path='*'>
               <Page404 />

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './LoadingSinglePage.scss';
 
 const LoadingSinglePage = () => {
@@ -7,7 +5,7 @@ const LoadingSinglePage = () => {
     <div className='LoadingSinglePage'>
       <img
         className='LoadingSinglePage__img'
-        src='https://i.gifer.com/QWWe.gif'
+        src='./Marvel-gif.gif'
         alt='marvel loading'
       />
     </div>
