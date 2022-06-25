@@ -1,23 +1,14 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './ComicsListItem.scss';
 
 const ComicsListItem = (props) => {
-  const { data, id, onComicSelected } = props;
+  const { data, id } = props;
   const { title, thumbnail, price } = data;
 
   return (
-    <li
-      //   onClick={() => onComicSelected(id)}
-      className='ComicsList-cards-item'
-
-      //   onKeyDown={(e) => {
-      //     if (e.key === 'Enter') {
-      //       onComicSelected(id);
-      //     }
-      //   }}
-    >
+    <li className='ComicsList-cards-item'>
       <Link to={`/comics/${id}`} className='ComicsList-cards-item__link'>
         <img
           className='ComicsList-cards-item__img'
@@ -35,10 +26,9 @@ const ComicsListItem = (props) => {
   );
 };
 
-// ComicsListItem.propTypes = {
-//   data: PropTypes.object,
-//   id: PropTypes.number,
-//   onCharSelected: PropTypes.func,
-// };
+ComicsListItem.propTypes = {
+  data: PropTypes.object,
+  id: PropTypes.number,
+};
 
 export default ComicsListItem;

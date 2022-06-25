@@ -49,7 +49,6 @@ const CharList = (props) => {
 
   const onScrollToBottom = useCallback(() => {
     window.scrollTo(0, windowHeight);
-    console.log(windowHeight);
   }, [windowHeight]);
 
   useEffect(() => {

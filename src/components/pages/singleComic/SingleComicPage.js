@@ -8,9 +8,6 @@ import LoadingSinglePage from './loadingSinglePage/LoadingSinglePage';
 
 import './SingleComicPage.scss';
 
-import decorationFalcon from '../../../assets/images/decorations/decorationFalcon.png';
-import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
-
 const SingleComicPage = () => {
   const { comicId } = useParams();
   const [comic, setComic] = useState(null);
@@ -52,17 +49,6 @@ const SingleComicPage = () => {
             {errorContent}
             {content}
           </ErrorBoundary>
-
-          <img
-            className='decoration-falcon'
-            src={decorationFalcon}
-            alt='decorationFalcon'
-          />
-          <img
-            className='decoration-iron-Man'
-            src={decorationIronMan}
-            alt='decorationIronMan'
-          />
         </div>
       </section>
     </>

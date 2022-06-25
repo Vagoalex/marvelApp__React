@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
+
 import useMarvelService from '../../hooks/useMarvelService';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import ErrorMessageComponent from '../ErrorMessage/ErrorMessage';
 import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
 import Skeleton from '../Skeleton/Skeleton';
 
 import './CharInfo.scss';
 
 import marvelIcon from '../../assets/icons/marvelIcon.jpg';
+import CharForm from '../CharForm/CharForm';
 
 const CharInfo = (props) => {
   const { getElementById, loading, error, clearError } = useMarvelService();
@@ -34,16 +36,23 @@ const CharInfo = (props) => {
 
   const skeleton = char || loading || error ? null : <Skeleton />;
   const loadingContent = loading ? <LoadingMarvel /> : null;
-  const errorContent = error ? <ErrorMessage /> : null;
+  const errorContent = error ? <ErrorMessageComponent /> : null;
   const content = !(loading || error || !char) ? <View char={char} /> : null;
 
   return (
-    <section className='CharInfo'>
-      {skeleton}
-      {loadingContent}
-      {errorContent}
-      {content}
-    </section>
+    <>
+      <section className='CharInfo'>
+        <div className='CharInfo__content'>
+          {skeleton}
+          {loadingContent}
+          {errorContent}
+          {content}
+        </div>
+        <div className='CharInfo__form'>
+          <CharForm />
+        </div>
+      </section>
+    </>
   );
 };
 

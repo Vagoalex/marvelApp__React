@@ -35,6 +35,9 @@ const App = () => {
             <Route exact path={`/comics/:comicId`}>
               <SingleComicPage />
             </Route>
+            <Route exact path={`/characters/:characterId`}>
+              <SingleComicPage />
+            </Route>
             <Route exact path='*'>
               <Page404 />
             </Route>

@@ -86,6 +86,9 @@ const RandomChar = (props) => {
 const View = ({ char }) => {
   const { name, description, thumbnail, homepage, wiki } = char;
 
+  const filteredDesc =
+    description.length > 100 ? `${description.slice(0, 100)}...` : description;
+
   const notAvailableImg = 'image_not_available.jpg';
   const image =
     thumbnail.slice(-23) === notAvailableImg ? marvelIcon : thumbnail;
@@ -94,7 +97,7 @@ const View = ({ char }) => {
       <img className='character-img' src={image} alt={name} />
       <div className='character-info'>
         <h3 className='character-info__title'>{name}</h3>
-        <p className='character-info__desc'>{description}</p>
+        <p className='character-info__desc'>{filteredDesc}</p>
         <div className='character-links'>
           <a
             className='character-links__link first-link button'

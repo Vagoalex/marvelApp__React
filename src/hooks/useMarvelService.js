@@ -47,6 +47,16 @@ const useMarvelService = () => {
     }
   };
 
+  const getCharacterByName = async (name) => {
+    const { url, apiKeyGmail } = _server;
+
+    const res = await request(
+      `${url}characters?name=${name}&apikey=${apiKeyGmail}`
+    );
+
+    return res.data.results.map(_transformCharacter);
+  };
+
   const _transformComics = (comics) => {
     const {
       id,
@@ -83,7 +93,7 @@ const useMarvelService = () => {
     const filteredDesc =
       description === ''
         ? `This Marvel character doesn't have description.\n Please, click the links`
-        : `${description.slice(0, 100)}...`;
+        : description;
 
     return {
       id,
@@ -100,6 +110,7 @@ const useMarvelService = () => {
     getAllComics,
     getAllCharacters,
     getElementById,
+    getCharacterByName,
     loading,
     error,
     clearError,

@@ -2,19 +2,32 @@
 
 .CharInfo {
   flex: 40%;
+  display: flex;
+  flex-direction: column;
+  &__content {
+    min-height: 224px;
+  }
+  &__form {
+    margin-top: 50px;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    background: url('https://funart.pro/uploads/posts/2021-04/thumbs/1618505261_18-funart_pro-p-oboi-fon-chisto-chyornii-fon-19.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   height: 100%;
   max-width: 425px;
   padding: 25px;
   border: 2px solid #000;
   border-radius: 15px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
-  background: linear-gradient(
-    180deg,
-    rgba(25, 25, 25, 1) 0%,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 7%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: url('https://abrakadabra.fun/uploads/posts/2022-01/1642716126_1-abrakadabra-fun-p-steklo-na-chernom-fone-1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   z-index: 10;
   position: sticky;
   top: 0;

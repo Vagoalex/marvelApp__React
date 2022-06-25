@@ -19,7 +19,7 @@
 .skeleton-select {
   background-color: rgb(60, 59, 59, 0.85);
   border-radius: 15px;
-  color: #fe3c3c;
+  color: #fff;
   font-weight: bold;
   font-size: 18px;
   line-height: 24px;
@@ -29,6 +29,7 @@
 }
 
 .skeleton {
+  height: 100%;
   &__header {
     display: grid;
     grid-template-columns: 40px auto;
