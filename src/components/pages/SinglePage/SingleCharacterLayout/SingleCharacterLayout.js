@@ -4,7 +4,6 @@ import './SingleCharacterLayout.scss';
 
 const SingleCharacterPageContent = ({ data }) => {
   const { name, description, thumbnail, homepage, wiki, comics } = data;
-  console.log(comics);
 
   const availableComics = comics.length === 0 ? ' hidden' : '';
 
@@ -33,10 +32,7 @@ const SingleCharacterPageContent = ({ data }) => {
       <div className='SingleCharPage-info'>
         <h3 className='SingleCharPage-info__title'>{name}</h3>
         <p className='SingleCharPage-info__desk'>{description}</p>
-        {/* <div className={`char-info-comics ${availableComics}`}>
-          <h4 className='char-info-comics__title'>Comics:</h4>
-          <ul className='comics-list'>{comicsContent}</ul>
-        </div> */}
+
         <div className={`SingleCharPage-comics ${availableComics}`}>
           <h4 className='SingleCharPage-comics__title'>Comics:</h4>
           <ul className='SingleCharPage-comics-list'>{comicsContent}</ul>

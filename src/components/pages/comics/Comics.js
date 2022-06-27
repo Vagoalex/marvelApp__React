@@ -1,18 +1,24 @@
 import ComicsBanner from '../../ComicsBanner/ComicsBanner';
 import ComicsList from '../../ComicsList/ComicsList';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
+import { Helmet } from 'react-helmet';
 
 import decorationVision from '../../../assets/images/decorations/decorationVision.png';
-// import decorationFalcon from '../../../assets/images/decorations/decorationFalcon.png';
-// import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
 
 import './Comics.scss';
 
 const Comics = () => {
   return (
     <>
-      <ComicsBanner />
+      <Helmet>
+        <meta
+          name='description'
+          content='Second page - Comics from mini app Marvel App'
+        />
+        <title>Comics page</title>
+      </Helmet>
 
+      <ComicsBanner />
       <section className='container wrapper'>
         <div className='main__content'>
           <ErrorBoundary>
@@ -23,16 +29,6 @@ const Comics = () => {
             src={decorationVision}
             alt='decoration-vision'
           />
-          {/* <img
-            className='decoration-falcon'
-            src={decorationFalcon}
-            alt='decorationFalcon'
-          />
-          <img
-            className='decoration-iron-Man'
-            src={decorationIronMan}
-            alt='decorationIronMan'
-          /> */}
         </div>
       </section>
     </>

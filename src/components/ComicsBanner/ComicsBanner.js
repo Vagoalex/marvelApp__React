@@ -1,5 +1,3 @@
-import { CSSTransition } from 'react-transition-group';
-
 import './ComicsBanner.scss';
 
 const ComicsBanner = () => {

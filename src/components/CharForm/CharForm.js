@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
 import useMarvelService from '../../hooks/useMarvelService';
@@ -16,11 +15,6 @@ const validate = (values) => {
   }
   return errors;
 };
-
-//  else if (!character) {
-//     errors.charName =
-//       'The character was not found. Check the name and try again';
-//   }
 
 const CharForm = () => {
   const [character, setCharacter] = useState(null);

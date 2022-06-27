@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import ComicsBanner from '../../ComicsBanner/ComicsBanner';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 import Page404 from '../page404/Page404';
@@ -48,8 +49,19 @@ const SinglePage = ({ Component, dataType }) => {
 
   return (
     <>
-      <ComicsBanner />
+      <Helmet>
+        <meta
+          name='description'
+          content={`${
+            data?.name || data?.title || 'Marvel'
+          } page from mini app Marvel App`}
+        />
+        <title>{`${
+          data?.name || data?.title || 'Marvel'
+        } - single page`}</title>
+      </Helmet>
 
+      <ComicsBanner />
       <section className='container wrapper'>
         <div className='main__content'>
           <ErrorBoundary>

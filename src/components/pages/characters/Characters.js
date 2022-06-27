@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 import RandomChar from '../../RandomChar/RandomChar';
 import CharList from '../../CharList/CharList';
@@ -6,8 +7,6 @@ import CharInfo from '../../CharInfo/CharInfo';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 
 import decorationVision from '../../../assets/images/decorations/decorationVision.png';
-// import decorationFalcon from '../../../assets/images/decorations/decorationFalcon.png';
-// import decorationIronMan from '../../../assets/images/decorations/ironMan.png';
 
 const Characters = () => {
   const [selectedChar, setSelectedChar] = useState(null);
@@ -23,6 +22,13 @@ const Characters = () => {
 
   return (
     <>
+      <Helmet>
+        <meta
+          name='description'
+          content='Main page - Characters from mini app Marvel App'
+        />
+        <title>Main page Characters</title>
+      </Helmet>
       <ErrorBoundary>
         <RandomChar />
       </ErrorBoundary>
@@ -39,16 +45,6 @@ const Characters = () => {
             src={decorationVision}
             alt='decoration-vision'
           />
-          {/* <img
-            className='decoration-falcon'
-            src={decorationFalcon}
-            alt='decorationFalcon'
-          />
-          <img
-            className='decoration-iron-Man'
-            src={decorationIronMan}
-            alt='decorationIronMan'
-          /> */}
         </div>
       </div>
     </>
