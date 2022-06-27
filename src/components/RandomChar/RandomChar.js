@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 
-import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import useMarvelService from '../../hooks/useMarvelService';
+import setContent from '../../utils/setContent';
 
 import './RandomChar.scss';
 
@@ -15,7 +14,8 @@ const RandomChar = (props) => {
   const [char, setChar] = useState(null);
   const [loadChar, setLoadChar] = useState(false);
 
-  const { getElementById, loading, error, clearError } = useMarvelService();
+  const { getElementById, process, setProcess, clearError } =
+    useMarvelService();
 
   useEffect(() => {
     updateChar();
@@ -35,21 +35,17 @@ const RandomChar = (props) => {
   const updateChar = () => {
     clearError();
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-    getElementById(id, 'characters').then(onCharLoaded);
+    getElementById(id, 'characters')
+      .then(onCharLoaded)
+      .then(() => setProcess('confirmed'));
     setLoadChar(false);
   };
-
-  const errorMessage = error ? <ErrorMessage /> : null;
-  const spinner = loading ? <LoadingMarvel /> : null;
-  const content = !(loading || error || !char) ? <View char={char} /> : null;
 
   return (
     <CSSTransition in={loadChar} timeout={500} classNames='random-char-load'>
       <section className='RandomChar wrapper'>
         <div className='RandomChar__character-info'>
-          {errorMessage}
-          {spinner}
-          {content}
+          {setContent(process, View, char)}
         </div>
         <div className='RandomChar__randomizer'>
           <div className='randomizer-top'>
@@ -83,8 +79,8 @@ const RandomChar = (props) => {
   );
 };
 
-const View = ({ char }) => {
-  const { name, description, thumbnail, homepage, wiki } = char;
+const View = ({ data }) => {
+  const { name, description, thumbnail, homepage, wiki } = data;
 
   const filteredDesc =
     description.length > 100 ? `${description.slice(0, 100)}...` : description;

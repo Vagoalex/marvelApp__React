@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import useMarvelService from '../../hooks/useMarvelService';
-import ErrorMessageComponent from '../ErrorMessage/ErrorMessage';
-import LoadingMarvel from '../LoadingMarvel/LoadingMarvel';
-import Skeleton from '../Skeleton/Skeleton';
+
+import setContent from '../../utils/setContent';
 
 import './CharInfo.scss';
 
@@ -11,7 +10,8 @@ import marvelIcon from '../../assets/icons/marvelIcon.jpg';
 import CharForm from '../CharForm/CharForm';
 
 const CharInfo = (props) => {
-  const { getElementById, loading, error, clearError } = useMarvelService();
+  const { getElementById, process, setProcess, clearError } =
+    useMarvelService();
 
   const [char, setChar] = useState(null);
 
@@ -27,26 +27,20 @@ const CharInfo = (props) => {
     }
 
     clearError();
-    getElementById(charID, 'characters').then(onCharLoaded);
+    getElementById(charID, 'characters')
+      .then(onCharLoaded)
+      .then(() => setProcess('confirmed'));
   };
 
   const onCharLoaded = (char) => {
     setChar(char);
   };
 
-  const skeleton = char || loading || error ? null : <Skeleton />;
-  const loadingContent = loading ? <LoadingMarvel /> : null;
-  const errorContent = error ? <ErrorMessageComponent /> : null;
-  const content = !(loading || error || !char) ? <View char={char} /> : null;
-
   return (
     <>
       <section className='CharInfo'>
         <div className='CharInfo__content'>
-          {skeleton}
-          {loadingContent}
-          {errorContent}
-          {content}
+          {setContent(process, View, char)}
         </div>
         <div className='CharInfo__form'>
           <CharForm />
@@ -56,8 +50,8 @@ const CharInfo = (props) => {
   );
 };
 
-const View = ({ char }) => {
-  const { name, description, thumbnail, homepage, wiki, comics } = char;
+const View = ({ data }) => {
+  const { name, description, thumbnail, homepage, wiki, comics } = data;
 
   const onScrollToBottom = () => {
     window.scrollTo(0, document.body.scrollHeight);

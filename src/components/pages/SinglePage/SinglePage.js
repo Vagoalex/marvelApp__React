@@ -11,7 +11,8 @@ const LoadingPage = lazy(() => import('./loadingSinglePage/LoadingSinglePage'));
 const SinglePage = ({ Component, dataType }) => {
   const { id } = useParams();
   const [data, setData] = useState(null);
-  const { getElementById, loading, error, clearError } = useMarvelService();
+  const { getElementById, process, setProcess, clearError } =
+    useMarvelService();
 
   useEffect(() => {
     updateData();
@@ -25,10 +26,14 @@ const SinglePage = ({ Component, dataType }) => {
     // eslint-disable-next-line default-case
     switch (dataType) {
       case 'characters':
-        getElementById(id, 'characters').then(onDataLoaded);
+        getElementById(id, 'characters')
+          .then(onDataLoaded)
+          .then(() => setProcess('confirmed'));
         break;
       case 'comics':
-        getElementById(id, 'comics').then(onDataLoaded);
+        getElementById(id, 'comics')
+          .then(onDataLoaded)
+          .then(() => setProcess('confirmed'));
         break;
     }
   };
@@ -41,11 +46,21 @@ const SinglePage = ({ Component, dataType }) => {
     window.scrollTo({ top: 0 });
   };
 
-  const loadingContent = loading ? <LoadingPage /> : null;
-  const errorContent = error ? <Page404 /> : null;
-  const content = !(loading || error || !data) ? (
-    <Component data={data} />
-  ) : null;
+  const setContent = (process, Component, data) => {
+    switch (process) {
+      case 'waiting':
+        return null;
+      case 'loading':
+        return <LoadingPage />;
+      case 'error':
+        return <Page404 />;
+      case 'confirmed':
+        return <Component data={data} />;
+
+      default:
+        throw new Error('Unexpected process state!');
+    }
+  };
 
   return (
     <>
@@ -64,11 +79,7 @@ const SinglePage = ({ Component, dataType }) => {
       <ComicsBanner />
       <section className='container wrapper'>
         <div className='main__content'>
-          <ErrorBoundary>
-            {loadingContent}
-            {errorContent}
-            {content}
-          </ErrorBoundary>
+          <ErrorBoundary>{setContent(process, Component, data)}</ErrorBoundary>
         </div>
       </section>
     </>

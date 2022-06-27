@@ -2,7 +2,8 @@ import { useHttp } from './http.hook';
 
 // TODO: refactor this methods, because it's have a copypaste
 const useMarvelService = () => {
-  const { request, loading, error, clearError } = useHttp();
+  const { request, process, setProcess, loading, error, clearError } =
+    useHttp();
 
   const _server = {
     url: 'https://gateway.marvel.com:443/v1/public/',
@@ -111,6 +112,8 @@ const useMarvelService = () => {
     getAllCharacters,
     getElementById,
     getCharacterByName,
+    process,
+    setProcess,
     loading,
     error,
     clearError,
