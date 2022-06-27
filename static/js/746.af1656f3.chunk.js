@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmarvel_app=self.webpackChunkmarvel_app||[]).push([[746],{4188:function(a,e,n){n.r(e),n.d(e,{default:function(){return l}});var i=n(184),l=function(){return(0,i.jsx)("div",{className:"LoadingSinglePage",children:(0,i.jsx)("img",{className:"LoadingSinglePage__img",src:"./Marvel-gif.gif",alt:"marvel loading"})})}}}]);
-//# sourceMappingURL=746.af1656f3.chunk.js.map
