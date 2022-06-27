@@ -1,11 +1,12 @@
 import './LoadingSinglePage.scss';
+import loadingGif from './Marvel-gif.gif';
 
 const LoadingSinglePage = () => {
   return (
     <div className='LoadingSinglePage'>
       <img
         className='LoadingSinglePage__img'
-        src='./Marvel-gif.gif'
+        src={loadingGif}
         alt='marvel loading'
       />
     </div>

@@ -69,12 +69,12 @@
       right: -190px;
     }
     @media screen and (max-width: $mediaBig) {
-      width: 32%;
-      right: -149px;
+      width: 33%;
+      right: -16%;
     }
     @media screen and (max-width: $mediaMediumWell) {
       width: 30%;
-      right: -124px;
+      right: -16%;
     }
   }
   .decoration-falcon {
@@ -88,18 +88,14 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
 
-    // @media screen and (max-width: $mediaExtraLarge) {
-    //   width: 35%;
-    //   left: -285px;
-    // }
-    // @media screen and (max-width: $mediaBig) {
-    //   width: 30%;
-    //   left: -208px;
-    // }
-    // @media screen and (max-width: $mediaMediumWell) {
-    //   top: -10%;
-    //   left: -161px;
-    // }
+    @media screen and (max-width: $mediaBig) {
+      width: 25%;
+      left: 4%;
+    }
+    @media screen and (max-width: $mediaMediumWell) {
+      width: 22%;
+      left: 5%;
+    }
   }
   .decoration-iron-Man {
     width: 20%;
@@ -112,16 +108,11 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
 
-    @media screen and (max-width: $mediaExtraLarge) {
-      // width: 16%;
-      // right: -190px;
-    }
     @media screen and (max-width: $mediaBig) {
-      width: 14%;
-      right: -150px;
+      width: 16%;
     }
     @media screen and (max-width: $mediaMediumWell) {
-      right: -90px;
+      animation-name: slide-bottom-adaptive;
     }
   }
 }
@@ -167,17 +158,15 @@
     transform: translateY(-6rem) translateX(-15rem);
   }
 }
+@keyframes slide-bottom-adaptive {
+  from {
+    transform: translateY(5rem) translateX(-10rem);
+  }
 
-// fade-appear, fade-appear-active, fade-appear-done
-// fade-enter, fade-enter-active, fade-enter-done
-// fade-exit, fade-exit-active, fade-exit-done
-
-// .fade-enter-active {
-//   animation: fade-in 10000ms forwards;
-// }
-// .fade-exit-active {
-//   animation: fade-out 10000ms forwards;
-// }
+  to {
+    transform: translateY(-15rem) translateX(-5rem);
+  }
+}
 
 .fade {
   position: absolute;
@@ -210,38 +199,6 @@
     transform: translateX(1150px);
   }
 }
-
-// .slide-enter {
-//   transition: transform 1000ms ease-out;
-// }
-
-// .slide-enter {
-//   transform: translateX(100%);
-// }
-
-// .slide-enter.slide-enter-active {
-//   transform: translateX(0%);
-// }
-
-// .slide-exit {
-//   opacity: 0;
-//   display: none;
-// }
-
-// .slide-exit-active {
-//   opacity: 0;
-//   // transform: translateX(-100%);
-//   display: none;
-// }
-// .slide-exit-done {
-//   opacity: 0;
-//   // transform: translateX(-100%);
-//   display: none;
-// }
-
-// // fade-appear, fade-appear-active, fade-appear-done
-// // fade-enter, fade-enter-active, fade-enter-done
-// // fade-exit, fade-exit-active, fade-exit-done
 
 .page-enter {
   transform: translateX(-110%);
